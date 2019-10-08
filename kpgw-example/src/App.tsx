@@ -8,6 +8,7 @@ import "./App.css";
 import logo from "./assets/logo_kbtg.png";
 import Routes from "./Routes";
 import Theming from "./Theme";
+import StoreProvider from "store/storeContext";
 
 function App() {
   return (
@@ -28,10 +29,16 @@ function App() {
           <p>React Pokemon Shop</p>
         </div>
       </header>
-      <Container maxWidth="md" style={{ backgroundColor: lightGreen[100] }}>
-        <Theming>
-          <Routes />
-        </Theming>
+      <Container
+        id="App-Container"
+        maxWidth="xl"
+        style={{ backgroundColor: lightGreen[100] }}
+      >
+        <StoreProvider>
+          <Theming>
+            <Routes />
+          </Theming>
+        </StoreProvider>
       </Container>
     </React.Fragment>
   );

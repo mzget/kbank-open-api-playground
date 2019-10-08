@@ -1,23 +1,17 @@
 import React, { useEffect } from "react";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 
-import { Pokedex } from "mock/pokedex";
+import { useStore } from "store/storeContext";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -47,7 +41,9 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function RecipeReviewCard() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-  const pokemon = Pokedex[0];
+  const [state] = useStore();
+  let { pokemon } = state;
+
   useEffect(() => {
     console.log("Checkout", pokemon);
 
@@ -62,14 +58,23 @@ export default function RecipeReviewCard() {
     script.setAttribute("data-amount", pokemon.price);
     script.setAttribute("data-currency", "THB");
     script.setAttribute("data-payment-methods", "card");
-    script.setAttribute("data-name", "React Poke Shop");
+    script.setAttribute("data-name", "React Pokemon Shop");
     script.type = "text/javascript";
     script.async = true;
+    script.onload = ev => {
+      console.log("onload", ev);
+    };
 
     let action = document.getElementById(`checkout-form`);
     if (action) {
       action.appendChild(script);
     }
+
+    return () => {
+      if (action) {
+        action.removeChild(script);
+      }
+    };
   }, [pokemon]);
 
   const handleExpandClick = () => {

@@ -1,4 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useCallback } from "react";
+import { useHistory } from "react-router-dom";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -8,9 +10,12 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
+import { useStore } from "store/storeContext";
+import { buyPokemon } from "store/cartReducer";
+
 const useStyles = makeStyles({
   card: {
-    width: "100%",
+    width: 350,
   },
   media: {
     height: 200,
@@ -31,7 +36,17 @@ export default function MediaCard(props: MediaCardProps) {
   const classes = useStyles();
   const { pokemon } = props;
 
-  useEffect(() => {}, [pokemon]);
+  let history = useHistory();
+  const [_, dispatch] = useStore();
+
+  const onClickHandler = useCallback(
+    (e: React.MouseEvent) => {
+      dispatch(buyPokemon(pokemon));
+
+      history.push("/checkout");
+    },
+    [dispatch, pokemon, history]
+  );
 
   return (
     <Card className={classes.card}>
@@ -54,7 +69,12 @@ export default function MediaCard(props: MediaCardProps) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" variant="contained">
+        <Button
+          size="small"
+          color="primary"
+          variant="contained"
+          onClick={onClickHandler}
+        >
           ใส่ตระกร้า
         </Button>
       </CardActions>
