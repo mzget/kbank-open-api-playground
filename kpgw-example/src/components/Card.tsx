@@ -23,6 +23,8 @@ type MediaCardProps = {
    key: string;
    src: string;
    name: string;
+   description: string;
+   price: string;
     } 
 }
 export default function MediaCard(props: MediaCardProps) {
@@ -34,7 +36,7 @@ export default function MediaCard(props: MediaCardProps) {
 
     script.src = "https://dev-kpaymentgateway.kasikornbank.com/ui/v2/kpayment.min.js";
     script.setAttribute('data-apikey', "pkey_test_75677dushd74774gdgdgd77d7dhsgfhfghfhgdh");
-    script.setAttribute('data-amount', "74.00")
+    script.setAttribute('data-amount', pokemon.price)
     script.setAttribute('data-currency',"THB")
     script.setAttribute('data-payment-methods',"card")
     script.setAttribute('data-name', "React Poke Shop")
@@ -60,16 +62,18 @@ export default function MediaCard(props: MediaCardProps) {
           <Typography gutterBottom variant="h5" component="h2">
             {pokemon.name}
           </Typography>
+          <Typography gutterBottom variant="subtitle2">
+            {`Price: ${pokemon.price} THB`}
+          </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
+            {pokemon.description}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
         <div  style={{width: '100%', height: 50}}> 
         <form id={`item-${pokemon.key}`} method="POST" action="/checkout">
-    </form>
+        </form>
         </div>
       </CardActions>
     </Card>
