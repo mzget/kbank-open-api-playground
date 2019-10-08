@@ -47,6 +47,8 @@ export default function RecipeReviewCard() {
   useEffect(() => {
     console.log("Checkout", pokemon);
 
+    console.log(window.location);
+
     const script = document.createElement("script");
 
     script.src =
@@ -63,6 +65,9 @@ export default function RecipeReviewCard() {
     script.async = true;
     script.onload = ev => {
       console.log("onload", ev);
+      if (action) {
+        console.log(action.children);
+      }
     };
 
     let action = document.getElementById(`checkout-form`);

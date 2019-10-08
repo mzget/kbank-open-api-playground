@@ -44,6 +44,7 @@ export default function MediaCard(props: MediaCardProps) {
       dispatch(buyPokemon(pokemon));
 
       history.push("/checkout");
+      window.location.reload(false);
     },
     [dispatch, pokemon, history]
   );
