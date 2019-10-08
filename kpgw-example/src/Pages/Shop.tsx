@@ -1,29 +1,36 @@
-import React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
+import React from "react";
+import styled from "styled-components";
+import GridList from "@material-ui/core/GridList";
+import GridListTile from "@material-ui/core/GridListTile";
+import GridListTileBar from "@material-ui/core/GridListTileBar";
+import ListSubheader from "@material-ui/core/ListSubheader";
 
-import MediaCard from 'components/Card'
+import MediaCard from "components/Card";
 
-import {Pokedex} from 'mock/pokedex'
-import logo from '../logo.svg';
+import { Pokedex } from "mock/pokedex";
 
 function Shop() {
   return (
-<React.Fragment>
-    <CssBaseline />
-    <Container maxWidth="md">
-    <div className="App">
-      <header>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>React Poke Shop</p>
-      </header>
-    {Pokedex.map(v => 
-        <MediaCard key={v.key} pokemon={v}/>
-      )}
-    </div>
-      </Container>
-    </React.Fragment>
+    <StyledShop>
+      <StyledGridList cellHeight={420}>
+        <GridListTile key="Subheader" cols={2} style={{ height: "auto" }}>
+          <ListSubheader component="div">Choose your pokemons</ListSubheader>
+        </GridListTile>
+        {Pokedex.map(v => (
+          <GridListTile key={v.key}>
+            <MediaCard key={v.key} pokemon={v} />
+          </GridListTile>
+        ))}
+      </StyledGridList>
+    </StyledShop>
   );
 }
 
 export default Shop;
+
+const StyledShop = styled.div`
+  display: flex;
+`;
+const StyledGridList = styled(GridList)`
+  width: 100%;
+`;
