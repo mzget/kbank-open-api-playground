@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
+import fetch from "cross-fetch";
 
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -47,6 +48,26 @@ export default function RecipeReviewCard() {
   const [state] = useStore();
   let { pokemon } = state;
 
+  function formSubmit(event) {
+    event.preventDefault();
+
+    let formData = new FormData(event.target);
+    console.log(formData);
+
+    let url = "/api/checkout";
+    fetch(url, {
+      method: "POST",
+      body: formData,
+      headers: {
+        "Content-Type": "multipart/form-data", //application/x-www-form-urlencoded
+      },
+      credentials: "same-origin",
+    })
+      .then(resp => resp.json())
+      .then(value => console.log(value))
+      .catch(ex => console.warn(ex.message));
+  }
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
@@ -62,19 +83,21 @@ export default function RecipeReviewCard() {
     script.type = "text/javascript";
     script.async = true;
     script.onload = ev => {
-      if (action) {
+      if (checkoutForm) {
         console.log("payment-container create new");
         (window as any).KPayment.create();
       }
     };
-    let action = document.getElementById(`checkout-form`);
-    if (action) {
-      action.appendChild(script);
+    let checkoutForm = document.getElementById(`checkout-form`);
+    if (checkoutForm) {
+      checkoutForm.appendChild(script);
+      checkoutForm.addEventListener("submit", formSubmit);
     }
 
     return () => {
-      if (action) {
-        action.removeChild(script);
+      if (checkoutForm) {
+        checkoutForm.removeChild(script);
+        checkoutForm.removeEventListener("submit", formSubmit);
         let paymentContainer = document.querySelector(".payment-container");
         if (paymentContainer) {
           document.body.removeChild(paymentContainer);
@@ -109,11 +132,7 @@ export default function RecipeReviewCard() {
         <StyledCardActions>
           <PayActionDiv>
             <p>Credit/Debit Card</p>
-            <form
-              id={`checkout-form`}
-              method="POST"
-              action="/api/checkout"
-            ></form>
+            <form id={`checkout-form`}></form>
           </PayActionDiv>
           <PayActionDiv>
             <p>QR Payment</p>
