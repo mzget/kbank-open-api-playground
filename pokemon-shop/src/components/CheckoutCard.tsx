@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import styled from "styled-components";
+
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -8,15 +10,18 @@ import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
+import green from "@material-ui/core/colors/green";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
+import Button from "@material-ui/core/Button";
 
 import { useStore } from "../store/storeContext";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     card: {
-      maxWidth: 345,
+      width: 350,
+      maxWidth: 440,
     },
     media: {
       height: 0,
@@ -29,8 +34,8 @@ const useStyles = makeStyles((theme: Theme) =>
         duration: theme.transitions.duration.shortest,
       }),
     },
-    expandOpen: {
-      transform: "rotate(180deg)",
+    button: {
+      maxWidth: 180,
     },
     avatar: {
       backgroundColor: red[500],
@@ -104,10 +109,46 @@ export default function RecipeReviewCard() {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <div style={{ width: "100%", height: 50 }}>
-          <form id={`checkout-form`} method="POST" action="/checkout"></form>
-        </div>
+        <StyledCardActions>
+          <PayActionDiv>
+            <p>Credit/Debit Card</p>
+            <form
+              id={`checkout-form`}
+              method="POST"
+              action="/api/checkout"
+            ></form>
+          </PayActionDiv>
+          <PayActionDiv>
+            <p>QR Payment</p>
+            <Button
+              variant="contained"
+              color="secondary"
+              disabled
+              className={classes.button}
+            >
+              Not yet ready
+            </Button>
+          </PayActionDiv>
+        </StyledCardActions>
       </CardActions>
     </Card>
   );
 }
+
+const PayActionDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  max-height: 50px;
+  width: 100%;
+  justify-content: space-between;
+  margin: 4px;
+  /* background-color: ${green[100]}; */
+`;
+
+const StyledCardActions = styled(CardActions)`
+  && {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+`;
