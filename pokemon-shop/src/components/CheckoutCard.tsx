@@ -44,8 +44,6 @@ export default function RecipeReviewCard() {
   let { pokemon } = state;
 
   useEffect(() => {
-    console.log("CheckoutCard", document);
-
     const script = document.createElement("script");
     script.src =
       "https://uat-kpaymentgateway.new-kpgw.com/ui/v2/kpayment.min.js";
@@ -61,6 +59,7 @@ export default function RecipeReviewCard() {
     script.async = true;
     script.onload = ev => {
       if (action) {
+        console.log("payment-container create new");
         (window as any).KPayment.create();
       }
     };
@@ -72,13 +71,15 @@ export default function RecipeReviewCard() {
     return () => {
       if (action) {
         action.removeChild(script);
+        let paymentContainer = document.getElementsByClassName(
+          "payment-container"
+        );
+        if (paymentContainer) {
+          document.body.removeChild(paymentContainer[0]);
+        }
       }
     };
   }, [pokemon]);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
 
   return (
     <Card className={classes.card}>
@@ -89,19 +90,17 @@ export default function RecipeReviewCard() {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title="The pokemon shop"
+        subheader={new Date().toDateString()}
       />
       <CardMedia
         className={classes.media}
-        image="/static/images/cards/paella.jpg"
-        title="Paella dish"
+        image={`/pokemons/${pokemon.src}`}
+        title={pokemon.name}
       />
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the
-          mussels, if you like.
+        <Typography gutterBottom variant="subtitle1">
+          {`Price: ${pokemon.price} THB`}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

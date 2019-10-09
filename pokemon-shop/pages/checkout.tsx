@@ -6,14 +6,7 @@ import CheckoutCard from "../src/components/CheckoutCard";
 
 function Checkout(props: any) {
   React.useEffect(() => {
-    console.log("CheckoutPage");
-
-    document.onreadystatechange = () => {
-      console.log("onreadystatechange");
-    };
-    document.addEventListener("DOMContentLoaded", event => {
-      console.log("DOM fully loaded and parsed");
-    });
+    console.log("Checkout Page");
   }, []);
 
   return (

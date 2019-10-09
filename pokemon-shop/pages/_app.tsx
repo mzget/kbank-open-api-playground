@@ -64,7 +64,7 @@ export default class MyApp extends App {
             }
             p {
               line-height: 0%;
-              font-size: 24px;
+              font-size: 16px;
             }
           `}</style>
         </ThemeProvider>

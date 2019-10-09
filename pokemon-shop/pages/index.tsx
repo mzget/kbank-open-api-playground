@@ -18,13 +18,6 @@ function Home(props: any) {
       let column = viewPort.clientWidth / cardWidth;
       setColumn(Math.floor(column));
     }
-
-    document.onreadystatechange = () => {
-      console.log("onreadystatechange");
-    };
-    document.addEventListener("DOMContentLoaded", event => {
-      console.log("DOM fully loaded and parsed");
-    });
   }, [setColumn]);
 
   return (
