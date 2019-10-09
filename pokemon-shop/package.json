@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.5.0",
+    "@material-ui/icons": "^4.4.3",
     "next": "9.1.1",
     "react": "16.10.2",
     "react-dom": "16.10.2",
@@ -16,6 +17,7 @@
     "styled-components": "^4.4.0"
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^1.10.6",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1"
   }

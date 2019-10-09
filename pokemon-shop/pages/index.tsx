@@ -11,16 +11,24 @@ import { Pokedex } from "../src/mock/pokedex";
 function Home(props: any) {
   let [column, setColumn] = React.useState(2);
   React.useEffect(() => {
+    console.log("Home Page");
     let viewPort = document.getElementById("App-Container");
     if (viewPort) {
       let cardWidth = 350;
       let column = viewPort.clientWidth / cardWidth;
       setColumn(Math.floor(column));
     }
+
+    document.onreadystatechange = () => {
+      console.log("onreadystatechange");
+    };
+    document.addEventListener("DOMContentLoaded", event => {
+      console.log("DOM fully loaded and parsed");
+    });
   }, [setColumn]);
 
   return (
-    <div>
+    <React.Fragment>
       <Head>
         <title>Home</title>
         <link rel="icon" href="/favicon.ico" />
@@ -42,7 +50,7 @@ function Home(props: any) {
           ))}
         </StyledGridList>
       </StyledShop>
-    </div>
+    </React.Fragment>
   );
 }
 

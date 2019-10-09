@@ -4,9 +4,9 @@ import Head from "next/head";
 import { ThemeProvider } from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
+import lightGreen from "@material-ui/core/colors/lightGreen";
 
 import theme from "../src/theme";
-import lightGreen from "@material-ui/core/colors/lightGreen";
 import StoreProvider from "../src/store/storeContext";
 
 export default class MyApp extends App {
