@@ -8,7 +8,8 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
       res.status(200).json({});
       break;
     case "POST":
-      res.status(200).json(body);
+      console.log(body);
+      res.writeHead(301, { Location: "/path" });
       break;
     default:
       res.setHeader("Allow", ["GET", "POST"]);

@@ -66,6 +66,9 @@ export default class MyApp extends App {
               line-height: 0%;
               font-size: 16px;
             }
+            img {
+              height: 48px;
+            }
           `}</style>
         </ThemeProvider>
       </React.Fragment>

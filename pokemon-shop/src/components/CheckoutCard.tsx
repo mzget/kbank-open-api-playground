@@ -44,7 +44,6 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 export default function RecipeReviewCard() {
   const classes = useStyles(undefined);
-  const [expanded, setExpanded] = React.useState(false);
   const [state] = useStore();
   let { pokemon } = state;
 
@@ -76,11 +75,9 @@ export default function RecipeReviewCard() {
     return () => {
       if (action) {
         action.removeChild(script);
-        let paymentContainer = document.getElementsByClassName(
-          "payment-container"
-        );
+        let paymentContainer = document.querySelector(".payment-container");
         if (paymentContainer) {
-          document.body.removeChild(paymentContainer[0]);
+          document.body.removeChild(paymentContainer);
         }
       }
     };

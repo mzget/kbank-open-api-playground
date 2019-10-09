@@ -14,7 +14,7 @@ function Home(props: any) {
     console.log("Home Page");
     let viewPort = document.getElementById("App-Container");
     if (viewPort) {
-      let cardWidth = 350;
+      let cardWidth = 280;
       let column = viewPort.clientWidth / cardWidth;
       setColumn(Math.floor(column));
     }

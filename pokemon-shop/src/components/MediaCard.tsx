@@ -15,7 +15,7 @@ import { buyPokemon } from "../store/cartReducer";
 
 const useStyles = makeStyles({
   card: {
-    width: 350,
+    width: 280,
   },
   media: {
     height: 200,

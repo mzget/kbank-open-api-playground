@@ -4,7 +4,6 @@ export function cartReducer(
   state: any,
   action: { type: string; payload: any }
 ) {
-  console.log(action);
   switch (action.type) {
     case BUY_POKEMON:
       return { ...state, pokemon: action.payload };
