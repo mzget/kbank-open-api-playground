@@ -2,8 +2,8 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { fetch } from "cross-fetch";
 
 const apikey = "pkey_prod_5BpmBr5LpqG84jYnDLPQe3Zv1OuhdN5dg";
-let url =
-  "https://dev-kpaymentgateway-services.kasikornbank.com/card/v2/charge";
+// https://dev-kpaymentgateway-services.kasikornbank.com/card/v2/charge
+let url = "";
 type AcceptBody = {
   apikey: string;
   amount: string;

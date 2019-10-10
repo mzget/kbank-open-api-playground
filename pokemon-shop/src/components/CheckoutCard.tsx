@@ -10,13 +10,13 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import { red } from "@material-ui/core/colors";
 import green from "@material-ui/core/colors/green";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import Button from "@material-ui/core/Button";
 
 import { useStore } from "../store/storeContext";
+import KPayment from "../react-kpayment/KPayment";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -45,76 +45,6 @@ export default function RecipeReviewCard(props: RecipeCardProps) {
   let { pokemon } = state;
   let { onProcess, onFinish } = props;
 
-  async function formSubmit(event) {
-    event.preventDefault();
-
-    let formData = new FormData(event.target);
-    let token = formData.get("token");
-    let paymentMethods = formData.get("paymentMethods");
-    let saveCard = formData.get("saveCard");
-
-    let data = {
-      token,
-      paymentMethods,
-      saveCard,
-    };
-    let url = "/api/checkout";
-    const resp = await fetch(url, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (resp.ok) {
-      const result = await resp.json();
-      onFinish();
-    } else {
-      const result = await resp.json();
-      alert(JSON.stringify(result));
-    }
-
-    onProcess();
-  }
-
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src =
-      "https://uat-kpaymentgateway.new-kpgw.com/ui/v2/kpayment.min.js";
-    script.setAttribute(
-      "data-apikey",
-      "pkey_prod_5BpmBr5LpqG84jYnDLPQe3Zv1OuhdN5dg"
-    );
-    script.setAttribute("data-amount", pokemon.price);
-    script.setAttribute("data-currency", "THB");
-    script.setAttribute("data-payment-methods", "card");
-    script.setAttribute("data-name", "React Pokemon Shop");
-    script.type = "text/javascript";
-    script.async = true;
-    script.onload = ev => {
-      if (checkoutForm) {
-        console.log("payment-container create new");
-        (window as any).KPayment.create();
-      }
-    };
-    let checkoutForm = document.getElementById(`checkout-form`);
-    if (checkoutForm) {
-      checkoutForm.appendChild(script);
-      checkoutForm.addEventListener("submit", formSubmit);
-    }
-
-    return () => {
-      if (checkoutForm) {
-        checkoutForm.removeChild(script);
-        checkoutForm.removeEventListener("submit", formSubmit);
-        let paymentContainer = document.querySelector(".payment-container");
-        if (paymentContainer) {
-          document.body.removeChild(paymentContainer);
-        }
-      }
-    };
-  }, [pokemon]);
-
   return (
     <Card className={classes.card}>
       <CardHeader
@@ -141,7 +71,21 @@ export default function RecipeReviewCard(props: RecipeCardProps) {
         <StyledCardActions>
           <PayActionDiv>
             <p>Credit/Debit Card</p>
-            <form id={`checkout-form`}></form>
+            <KPayment
+              formAction="/api/checkout"
+              onFinish={onFinish}
+              onProcess={onProcess}
+              debug={true}
+              attrs={{
+                scriptUrl:
+                  "https://uat-kpaymentgateway.new-kpgw.com/ui/v2/kpayment.min.js",
+                apiKey: "pkey_prod_5BpmBr5LpqG84jYnDLPQe3Zv1OuhdN5dg",
+                amount: pokemon.price,
+                currency: "TBH",
+                paymentMethods: "card",
+                shopName: "The Pokemon Shop",
+              }}
+            />
           </PayActionDiv>
           <PayActionDiv>
             <p>QR Payment</p>
