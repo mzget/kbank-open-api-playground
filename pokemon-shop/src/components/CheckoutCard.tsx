@@ -49,13 +49,21 @@ export default function RecipeReviewCard(props: RecipeCardProps) {
     event.preventDefault();
 
     let formData = new FormData(event.target);
+    let token = formData.get("token");
+    let paymentMethods = formData.get("paymentMethods");
+    let saveCard = formData.get("saveCard");
 
+    let data = {
+      token,
+      paymentMethods,
+      saveCard,
+    };
     let url = "/api/checkout";
     fetch(url, {
       method: "POST",
-      body: formData,
+      body: JSON.stringify(data),
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/json",
       },
     })
       .then(value => {
