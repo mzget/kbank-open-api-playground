@@ -28,18 +28,8 @@ const useStyles = makeStyles((theme: Theme) =>
       height: 0,
       paddingTop: "56.25%", // 16:9
     },
-    expand: {
-      transform: "rotate(0deg)",
-      marginLeft: "auto",
-      transition: theme.transitions.create("transform", {
-        duration: theme.transitions.duration.shortest,
-      }),
-    },
     button: {
       maxWidth: 180,
-    },
-    avatar: {
-      backgroundColor: red[500],
     },
   })
 );

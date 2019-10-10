@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Head from "next/head";
 
 import CheckoutCard from "../src/components/CheckoutCard";
+import ReceiptCard from "../src/components/ReceiptCard";
 
 enum CheckoutState {
   none = 0,
@@ -32,7 +33,7 @@ function CheckoutRender(props: any) {
         </StyledProcessing>
       );
     case CheckoutState.finished:
-      return <CheckoutCard onProcess={onProcessHandler} />;
+      return <ReceiptCard />;
   }
 }
 
