@@ -52,19 +52,16 @@ export default function RecipeReviewCard() {
     event.preventDefault();
 
     let formData = new FormData(event.target);
-    console.log(formData);
 
     let url = "/api/checkout";
     fetch(url, {
       method: "POST",
       body: formData,
       headers: {
-        "Content-Type": "multipart/form-data", //application/x-www-form-urlencoded
+        "Content-Type": "application/x-www-form-urlencoded",
       },
-      credentials: "same-origin",
     })
-      .then(resp => resp.json())
-      .then(value => console.log(value))
+      .then(value => console.log(value.statusText))
       .catch(ex => console.warn(ex.message));
   }
 
