@@ -42,8 +42,13 @@ async function Checkout(req: NextApiRequest, res: NextApiResponse) {
           },
           body: JSON.stringify(data),
         });
-        const result = await resp.json();
-        res.status(200).json(result);
+        if (resp.ok) {
+          const result = await resp.json();
+          res.status(200).json(result);
+        } else {
+          const result = await resp.json();
+          throw new Error(JSON.stringify(result));
+        }
       } catch (ex) {
         res.status(400).json({ status: "Bad Request", message: ex.message });
       }

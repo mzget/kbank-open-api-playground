@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import fetch from "cross-fetch";
+import { fetch } from "cross-fetch";
 
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -45,7 +45,7 @@ export default function RecipeReviewCard(props: RecipeCardProps) {
   let { pokemon } = state;
   let { onProcess, onFinish } = props;
 
-  function formSubmit(event) {
+  async function formSubmit(event) {
     event.preventDefault();
 
     let formData = new FormData(event.target);
@@ -59,18 +59,20 @@ export default function RecipeReviewCard(props: RecipeCardProps) {
       saveCard,
     };
     let url = "/api/checkout";
-    fetch(url, {
+    const resp = await fetch(url, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
       },
-    })
-      .then(value => {
-        console.log(value.statusText);
-        onFinish();
-      })
-      .catch(ex => console.warn(ex.message));
+    });
+    if (resp.ok) {
+      const result = await resp.json();
+      onFinish();
+    } else {
+      const result = await resp.json();
+      alert(JSON.stringify(result));
+    }
 
     onProcess();
   }
