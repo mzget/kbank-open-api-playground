@@ -43,10 +43,17 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   })
 );
-export default function RecipeReviewCard() {
+
+type RecipeCardProps = {
+  onProcess(): void;
+  onFinish?(): void;
+};
+
+export default function RecipeReviewCard(props: RecipeCardProps) {
   const classes = useStyles(undefined);
   const [state] = useStore();
   let { pokemon } = state;
+  let { onProcess, onFinish } = props;
 
   function formSubmit(event) {
     event.preventDefault();
@@ -61,8 +68,13 @@ export default function RecipeReviewCard() {
         "Content-Type": "application/x-www-form-urlencoded",
       },
     })
-      .then(value => console.log(value.statusText))
+      .then(value => {
+        console.log(value.statusText);
+        onFinish();
+      })
       .catch(ex => console.warn(ex.message));
+
+    onProcess();
   }
 
   useEffect(() => {
