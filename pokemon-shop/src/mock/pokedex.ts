@@ -53,4 +53,13 @@ export const Pokedex = [
       "Slowpoke uses its tail to catch prey by dipping it in water at the side of a river. However, this Pokémon often forgets what it's doing and often spends entire days just loafing at water's edge.",
     price: "150.00",
   },
+  {
+    id: "144",
+    key: "144-Articuno",
+    src: "144-Articuno.png",
+    name: "Articuno",
+    description:
+      "Articuno is a legendary bird Pokémon that can control ice. The flapping of its wings chills the air. As a result, it is said that when this Pokémon flies, snow will fall.",
+    price: "1500.00",
+  },
 ];
