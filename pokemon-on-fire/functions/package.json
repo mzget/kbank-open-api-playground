@@ -1,7 +1,7 @@
 {
   "name": "functions",
   "scripts": {
-    "build": "tsc --project src/functions",
+    "build": "tsc",
     "preserve": "",
     "serve": "cross-env NODE_ENV=production npm run build && firebase serve --only functions",
     "shell": "npm run build && firebase functions:shell",
