@@ -1,0 +1,26 @@
+{
+  "name": "pokemon-shop",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "postbuild": "cp -r next ../next"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.5.0",
+    "@material-ui/icons": "^4.4.3",
+    "cross-fetch": "^3.0.4",
+    "next": "9.1.1",
+    "react": "16.10.2",
+    "react-dom": "16.10.2",
+    "redux-actions": "^2.6.5",
+    "styled-components": "^4.4.0"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.10.6",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1"
+  }
+}
