@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "postbuild": "cp -r next ../functions/next"
+    "postbuild": "mv -f next ../../next"
   },
   "dependencies": {
     "@material-ui/core": "^4.5.0",
