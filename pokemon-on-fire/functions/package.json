@@ -1,8 +1,9 @@
 {
   "name": "functions",
   "scripts": {
-    "build": "tsc",
-    "serve": "npm run build && firebase serve --only functions",
+    "build": "tsc --project src/functions",
+    "preserve": "",
+    "serve": "cross-env NODE_ENV=production npm run build && firebase serve --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
@@ -27,7 +28,8 @@
   "devDependencies": {
     "typescript": "^3.2.2",
     "tslint-config-prettier": "^1.18.0",
-    "tslint-plugin-prettier": "^2.0.1"
+    "tslint-plugin-prettier": "^2.0.1",
+    "cross-env": "5.2.0"
   },
   "private": true
 }
