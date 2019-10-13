@@ -1,9 +1,12 @@
 import * as functions from "firebase-functions";
 const nextjs = require("next");
 
-var dev = process.env.NODE_ENV !== "production";
-var app = nextjs({ dev: dev, dir: "../next", conf: { distDir: "../next" } });
-var handle = app.getRequestHandler();
+// var dev = process.env.NODE_ENV !== "production";
+const app = nextjs({
+  dev: false,
+  conf: { distDir: "next" },
+});
+const handle = app.getRequestHandler();
 
 // Start writing Firebase Functions
 // https://firebase.google.com/docs/functions/typescript
