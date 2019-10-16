@@ -1,0 +1,12 @@
+{
+  "name": "react-kpayment",
+  "version": "1.0.0",
+  "description": "React wrapper for kpay.js",
+  "main": "lib/KPayment.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "transpile": "tsc"
+  },
+  "author": "nattapon.rat@kbtg.tech",
+  "license": "ISC"
+}

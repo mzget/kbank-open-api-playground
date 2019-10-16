@@ -1339,7 +1339,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_theme__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../src/theme */ "./src/theme.tsx");
 
 
-var _jsxFileName = "/Users/nattapon/Projects/kbtg/monorepo-open-api/packages/kbank-open-api-playground/pokemon-on-fire/app/pages/_document.tsx";
+var _jsxFileName = "/Users/nattapon/Projects/playground/kbank-open-api-playground/lerna-repo/packages/pokemon-on-fire/app/pages/_document.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
 

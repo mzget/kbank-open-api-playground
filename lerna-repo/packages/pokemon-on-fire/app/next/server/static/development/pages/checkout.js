@@ -88,21 +88,10 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
-
-/***/ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js":
-/*!***********************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! core-js/library/fn/json/stringify */ "core-js/library/fn/json/stringify");
-
-/***/ }),
 
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/object/create.js":
 /*!**********************************************************************!*\
@@ -249,7 +238,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _src_components_CheckoutCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../src/components/CheckoutCard */ "./src/components/CheckoutCard.tsx");
 /* harmony import */ var _src_components_ReceiptCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../src/components/ReceiptCard */ "./src/components/ReceiptCard.tsx");
-var _jsxFileName = "/Users/nattapon/Projects/kbtg/monorepo-open-api/packages/kbank-open-api-playground/pokemon-on-fire/app/pages/checkout.tsx";
+var _jsxFileName = "/Users/nattapon/Projects/playground/kbank-open-api-playground/lerna-repo/packages/pokemon-on-fire/app/pages/checkout.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -415,8 +404,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/core/Button */ "@material-ui/core/Button");
 /* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_13__);
 /* harmony import */ var _store_storeContext__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../store/storeContext */ "./src/store/storeContext.tsx");
-/* harmony import */ var _react_kpayment_KPayment__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../react-kpayment/KPayment */ "./src/react-kpayment/KPayment.tsx");
-var _jsxFileName = "/Users/nattapon/Projects/kbtg/monorepo-open-api/packages/kbank-open-api-playground/pokemon-on-fire/app/src/components/CheckoutCard.tsx";
+/* harmony import */ var react_kpayment__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-kpayment */ "react-kpayment");
+/* harmony import */ var react_kpayment__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(react_kpayment__WEBPACK_IMPORTED_MODULE_15__);
+var _jsxFileName = "/Users/nattapon/Projects/playground/kbank-open-api-playground/lerna-repo/packages/pokemon-on-fire/app/src/components/CheckoutCard.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -543,7 +533,7 @@ function RecipeReviewCard(props) {
       lineNumber: 73
     },
     __self: this
-  }, "Credit/Debit Card"), __jsx(_react_kpayment_KPayment__WEBPACK_IMPORTED_MODULE_15__["default"], {
+  }, "Credit/Debit Card"), __jsx(react_kpayment__WEBPACK_IMPORTED_MODULE_15___default.a, {
     formAction: "/api/checkout",
     onFinish: onFinish,
     onProcess: onProcess,
@@ -631,7 +621,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core/Button */ "@material-ui/core/Button");
 /* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var _store_storeContext__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../store/storeContext */ "./src/store/storeContext.tsx");
-var _jsxFileName = "/Users/nattapon/Projects/kbtg/monorepo-open-api/packages/kbank-open-api-playground/pokemon-on-fire/app/src/components/ReceiptCard.tsx";
+var _jsxFileName = "/Users/nattapon/Projects/playground/kbank-open-api-playground/lerna-repo/packages/pokemon-on-fire/app/src/components/ReceiptCard.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -753,117 +743,6 @@ function ReceiptCard() {
 
 /***/ }),
 
-/***/ "./src/react-kpayment/KPayment.tsx":
-/*!*****************************************!*\
-  !*** ./src/react-kpayment/KPayment.tsx ***!
-  \*****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return KPayment; });
-/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/json/stringify */ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-
-var _jsxFileName = "/Users/nattapon/Projects/kbtg/monorepo-open-api/packages/kbank-open-api-playground/pokemon-on-fire/app/src/react-kpayment/KPayment.tsx";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
-
-function KPayment(props) {
-  let {
-    attrs,
-    formAction,
-    onFinish,
-    onError,
-    onProcess,
-    debug = false
-  } = props;
-
-  async function formSubmit(event) {
-    event.preventDefault();
-    let formData = new FormData(event.target);
-    let token = formData.get("token");
-    let paymentMethods = formData.get("paymentMethods");
-    let saveCard = formData.get("saveCard");
-    let data = {
-      token,
-      paymentMethods,
-      saveCard
-    };
-    let url = formAction;
-    const resp = await fetch(url, {
-      method: "POST",
-      body: _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()(data),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
-
-    if (resp.ok) {
-      const result = await resp.json();
-      if (onFinish) onFinish(result);
-    } else {
-      const result = await resp.json();
-      if (onError) onError(_babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()(result));
-    }
-
-    if (onProcess) onProcess();
-  }
-
-  react__WEBPACK_IMPORTED_MODULE_1___default.a.useEffect(() => {
-    const script = document.createElement("script");
-    script.src = attrs.scriptUrl;
-    script.setAttribute("data-apikey", attrs.apiKey);
-    script.setAttribute("data-amount", attrs.amount);
-    script.setAttribute("data-currency", attrs.currency);
-    script.setAttribute("data-payment-methods", attrs.paymentMethods);
-    script.setAttribute("data-name", attrs.shopName);
-    script.type = "text/javascript";
-    script.async = true;
-
-    script.onload = ev => {
-      if (checkoutForm) {
-        if (debug) {
-          console.log("payment-container create new");
-        }
-
-        window.KPayment.create();
-      }
-    };
-
-    let checkoutForm = document.getElementById(`checkout-form`);
-
-    if (checkoutForm) {
-      checkoutForm.appendChild(script);
-      checkoutForm.addEventListener("submit", formSubmit);
-    }
-
-    return () => {
-      if (checkoutForm) {
-        checkoutForm.removeChild(script);
-        checkoutForm.removeEventListener("submit", formSubmit);
-        let paymentContainer = document.querySelector(".payment-container");
-
-        if (paymentContainer) {
-          document.body.removeChild(paymentContainer);
-        }
-      }
-    };
-  }, []);
-  return __jsx("form", {
-    id: `checkout-form`,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 98
-    },
-    __self: this
-  });
-}
-
-/***/ }),
-
 /***/ "./src/store/cartReducer.ts":
 /*!**********************************!*\
   !*** ./src/store/cartReducer.ts ***!
@@ -914,7 +793,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _cartReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cartReducer */ "./src/store/cartReducer.ts");
 
-var _jsxFileName = "/Users/nattapon/Projects/kbtg/monorepo-open-api/packages/kbank-open-api-playground/pokemon-on-fire/app/src/store/storeContext.tsx";
+var _jsxFileName = "/Users/nattapon/Projects/playground/kbank-open-api-playground/lerna-repo/packages/pokemon-on-fire/app/src/store/storeContext.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
@@ -952,14 +831,14 @@ const useStore = () => {
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!**********************************!*\
   !*** multi ./pages/checkout.tsx ***!
   \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/nattapon/Projects/kbtg/monorepo-open-api/packages/kbank-open-api-playground/pokemon-on-fire/app/pages/checkout.tsx */"./pages/checkout.tsx");
+module.exports = __webpack_require__(/*! /Users/nattapon/Projects/playground/kbank-open-api-playground/lerna-repo/packages/pokemon-on-fire/app/pages/checkout.tsx */"./pages/checkout.tsx");
 
 
 /***/ }),
@@ -1096,17 +975,6 @@ module.exports = require("@material-ui/icons/ShoppingCart");
 
 /***/ }),
 
-/***/ "core-js/library/fn/json/stringify":
-/*!****************************************************!*\
-  !*** external "core-js/library/fn/json/stringify" ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("core-js/library/fn/json/stringify");
-
-/***/ }),
-
 /***/ "core-js/library/fn/object/create":
 /*!***************************************************!*\
   !*** external "core-js/library/fn/object/create" ***!
@@ -1192,6 +1060,17 @@ module.exports = require("next/router");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "react-kpayment":
+/*!*********************************!*\
+  !*** external "react-kpayment" ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-kpayment");
 
 /***/ }),
 

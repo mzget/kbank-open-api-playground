@@ -2,6 +2,13 @@
   "name": "root",
   "private": true,
   "devDependencies": {
-    "lerna": "^3.13.1"
+    "@types/react": "^16.9.7",
+    "@types/react-dom": "^16.9.2",
+    "lerna": "^3.13.1",
+    "typescript": "^3.6.4"
+  },
+  "dependencies": {
+    "react": "16.10.2",
+    "react-dom": "16.10.2"
   }
 }

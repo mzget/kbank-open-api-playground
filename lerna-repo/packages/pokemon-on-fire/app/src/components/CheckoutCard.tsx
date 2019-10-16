@@ -16,7 +16,7 @@ import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import Button from "@material-ui/core/Button";
 
 import { useStore } from "../store/storeContext";
-import KPayment from "../react-kpayment/KPayment";
+import KPayment from "react-kpayment";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
