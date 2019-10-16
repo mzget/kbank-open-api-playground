@@ -13,7 +13,13 @@ enum CheckoutState {
 
 function CheckoutRender(props: any) {
   let [checkoutState, setCheckoutState] = React.useState(CheckoutState.none);
-  const onProcessHandler = React.useCallback(() => {
+  let [form , setForm] =React.useState({})
+  const onProcessHandler = React.useCallback((formData:FormData) => {
+    let data = {}
+    for(let [key, value] of formData.entries()) {
+      data[key] = value
+   }
+   setForm(data);
     setCheckoutState(CheckoutState.processing);
   }, []);
   const onFinishHandler = React.useCallback(() => {
@@ -30,6 +36,11 @@ function CheckoutRender(props: any) {
         <StyledProcessing>
           <img src="/pokeball.png" />
           <p>Payment Processing..., Plase wait</p>
+          {
+            Object.entries(form).map((keyPair)=> (
+              <p key={keyPair[0]}>{keyPair[0]} : {keyPair[1]}</p>
+            ))
+          }
         </StyledProcessing>
       );
     case CheckoutState.finished:

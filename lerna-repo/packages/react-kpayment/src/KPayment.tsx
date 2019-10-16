@@ -13,7 +13,7 @@ type KPaymentProps = {
   attrs: KPaymentScriptProps;
   onFinish?(result: string): void;
   onError?(message: string): void;
-  onProcess?(): void;
+  onProcess?: (formData: FormData) => void;
   debug?: boolean;
 };
 
@@ -56,7 +56,7 @@ export default function KPayment(props: KPaymentProps) {
       if (onError) onError(JSON.stringify(result));
     }
 
-    if (onProcess) onProcess();
+    if (onProcess) onProcess(formData);
   }
 
   React.useEffect(() => {

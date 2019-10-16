@@ -39,7 +39,7 @@ export default class MyApp extends App {
                 margin: 8,
               }}
             >
-              <p>KBank Payment Gateway Implementation</p>
+              <p>KBank Payment API Implementation</p>
               <span style={{ flex: 1 }} />
               <p>React Pokemon Shop</p>
             </div>

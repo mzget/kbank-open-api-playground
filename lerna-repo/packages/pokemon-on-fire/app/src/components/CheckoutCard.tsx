@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 type RecipeCardProps = {
-  onProcess(): void;
+  onProcess?: (formData: FormData) => void;
   onFinish?(): void;
 };
 
@@ -81,7 +81,7 @@ export default function RecipeReviewCard(props: RecipeCardProps) {
                   "https://uat-kpaymentgateway.new-kpgw.com/ui/v2/kpayment.min.js",
                 apiKey: "pkey_prod_5BpmBr5LpqG84jYnDLPQe3Zv1OuhdN5dg",
                 amount: pokemon.price,
-                currency: "TBH",
+                currency: "THB",
                 paymentMethods: "card",
                 shopName: "The Pokemon Shop",
               }}

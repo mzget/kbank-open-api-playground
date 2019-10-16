@@ -1,4 +1,4 @@
 code-sample/kbank.pentest.1/**
 
-pokemon-on-fire/next
-pokemon-on-fire/app/next
+lerna-repo/packages/pokemon-on-fire/next/**
+lerna-repo/packages/pokemon-on-fire/app/next/**

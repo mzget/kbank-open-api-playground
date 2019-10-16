@@ -83,7 +83,7 @@ function KPayment(props) {
                         _a.label = 5;
                     case 5:
                         if (onProcess)
-                            onProcess();
+                            onProcess(formData);
                         return [2 /*return*/];
                 }
             });

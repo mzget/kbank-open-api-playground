@@ -4,7 +4,7 @@
   "devDependencies": {
     "@types/react": "^16.9.7",
     "@types/react-dom": "^16.9.2",
-    "lerna": "^3.13.1",
+    "lerna": "^3.18.1",
     "typescript": "^3.6.4"
   },
   "dependencies": {
