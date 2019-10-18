@@ -1,6 +1,7 @@
 import React from "react";
 import App from "next/app";
 import Head from "next/head";
+import Link from 'next/link'
 import { ThemeProvider } from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
@@ -24,19 +25,21 @@ export default class MyApp extends App {
     return (
       <React.Fragment>
         <Head>
-          <title>Pokemon-Shop</title>
+          <title>The Pokemon-Shop</title>
         </Head>
         <ThemeProvider theme={theme}>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline />
           <header className="App-header">
-            <img src={"/logo_kbtg.png"} className="App-logo" alt="logo" />
+            <Link href="/">
+              <img src={"/logo_kbtg.png"} className="App-logo" alt="logo" />
+            </Link>
             <div
               style={{
                 width: "100%",
                 display: "flex",
                 alignSelf: "center",
-                margin: 8,
+                margin: 8
               }}
             >
               <p>KBank Payment API Implementation</p>
@@ -68,6 +71,7 @@ export default class MyApp extends App {
             }
             img {
               height: 48px;
+              cursor: pointer;
             }
           `}</style>
         </ThemeProvider>

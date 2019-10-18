@@ -21,7 +21,8 @@ import KPayment from "react-kpayment";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     card: {
-      width: "100%"
+      width: "100%",
+      maxWidth: 340
     },
     media: {
       height: 0,
