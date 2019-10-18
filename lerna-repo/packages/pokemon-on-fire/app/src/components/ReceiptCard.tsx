@@ -19,18 +19,18 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     card: {
       width: 350,
-      maxWidth: 440,
+      maxWidth: 440
     },
     media: {
       height: 0,
-      paddingTop: "56.25%", // 16:9
+      paddingTop: "56.25%" // 16:9
     },
     button: {
-      maxWidth: 180,
-    },
+      maxWidth: 180
+    }
   })
 );
-export default function ReceiptCard() {
+export default function ReceiptCard(props: any) {
   const classes = useStyles(undefined);
   const [state] = useStore();
   const router = useRouter();

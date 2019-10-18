@@ -53,6 +53,8 @@ function KPayment(props) {
                         token = formData.get("token");
                         paymentMethods = formData.get("paymentMethods");
                         saveCard = formData.get("saveCard");
+                        if (onProcess)
+                            onProcess(formData);
                         data = {
                             token: token,
                             paymentMethods: paymentMethods,
@@ -81,10 +83,7 @@ function KPayment(props) {
                         if (onError)
                             onError(JSON.stringify(result));
                         _a.label = 5;
-                    case 5:
-                        if (onProcess)
-                            onProcess(formData);
-                        return [2 /*return*/];
+                    case 5: return [2 /*return*/];
                 }
             });
         });

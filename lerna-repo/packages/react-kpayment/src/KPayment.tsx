@@ -35,6 +35,8 @@ export default function KPayment(props: KPaymentProps) {
     let paymentMethods = formData.get("paymentMethods");
     let saveCard = formData.get("saveCard");
 
+    if (onProcess) onProcess(formData);
+
     let data = {
       token,
       paymentMethods,
@@ -55,8 +57,6 @@ export default function KPayment(props: KPaymentProps) {
       const result = await resp.json();
       if (onError) onError(JSON.stringify(result));
     }
-
-    if (onProcess) onProcess(formData);
   }
 
   React.useEffect(() => {

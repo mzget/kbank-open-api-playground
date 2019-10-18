@@ -22,24 +22,24 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     card: {
       width: 350,
-      maxWidth: 440,
+      maxWidth: 440
     },
     media: {
       height: 0,
-      paddingTop: "56.25%", // 16:9
+      paddingTop: "56.25%" // 16:9
     },
     button: {
-      maxWidth: 180,
-    },
+      maxWidth: 180
+    }
   })
 );
 
-type RecipeCardProps = {
+type CheckoutCardProps = {
   onProcess?: (formData: FormData) => void;
-  onFinish?(): void;
+  onFinish?: (result: any) => void;
 };
 
-export default function RecipeReviewCard(props: RecipeCardProps) {
+export default function CheckoutCard(props: CheckoutCardProps) {
   const classes = useStyles(undefined);
   const [state] = useStore();
   let { pokemon } = state;
@@ -75,6 +75,7 @@ export default function RecipeReviewCard(props: RecipeCardProps) {
               formAction="/api/checkout"
               onFinish={onFinish}
               onProcess={onProcess}
+              onError={() => {}}
               debug={true}
               attrs={{
                 scriptUrl:
@@ -83,7 +84,7 @@ export default function RecipeReviewCard(props: RecipeCardProps) {
                 amount: pokemon.price,
                 currency: "THB",
                 paymentMethods: "card",
-                shopName: "The Pokemon Shop",
+                shopName: "The Pokemon Shop"
               }}
             />
           </PayActionDiv>
