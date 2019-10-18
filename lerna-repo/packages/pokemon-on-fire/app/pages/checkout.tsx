@@ -25,9 +25,7 @@ function CheckoutRender(props: any) {
   }, []);
   const onFinishHandler = React.useCallback((result: any) => {
     setResult(result);
-    setTimeout(() => {
-      setCheckoutState(CheckoutState.finished);
-    }, 3000);
+    setCheckoutState(CheckoutState.finished);
   }, []);
 
   if (checkoutState === CheckoutState.finished) {

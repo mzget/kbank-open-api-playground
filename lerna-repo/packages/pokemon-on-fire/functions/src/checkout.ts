@@ -1,5 +1,4 @@
 import * as express from "express";
-import { fetch } from "cross-fetch";
 
 type AcceptBody = {
   amount: string;
@@ -9,37 +8,37 @@ type AcceptBody = {
   saveCard: true;
   token: string;
 };
-const apikey = "pkey_prod_5BpmBr5LpqG84jYnDLPQe3Zv1OuhdN5dg";
-let chargeEndpoint =
-  "https://us-central1-kbank-open-api.cloudfunctions.net/api/charge";
 export async function Checkout(req: express.Request, res: express.Response) {
   let body: AcceptBody = req.body;
   try {
-    let data = {
-      token: body.token,
-      saveCard: body.saveCard,
-      source_type: body.paymentMethods,
-      amount: body.amount,
-      currency: body.currency,
-      mode: "token",
-      reference_order: "test123"
-    };
-    const resp = await fetch(chargeEndpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "no-cache",
-        "x-api-key": apikey
-      },
-      body: JSON.stringify(data)
-    });
-    if (resp.ok) {
-      const result = await resp.json();
-      res.status(200).json(result);
-    } else {
-      const result = await resp.json();
-      throw new Error(JSON.stringify(result));
-    }
+    /**Simulate Charge API */
+    setTimeout(() => {
+      let resp = {
+        id: "chrg_prod_47b66904ca59846c6be83cf444870a2f2",
+        object: "charge",
+        amount: body.amount,
+        currency: body.currency,
+        transaction_state: "Auhtorized",
+        source: {
+          id: "card_test_42f00571ac396ad600ce8e72b0e58def1",
+          object: "card",
+          brand: "MASTERCARD",
+          last4: "514950******9007",
+          issuer_bank: "Kasikornbank Public Limited"
+        },
+        created: "20180322121944000",
+        status: "success",
+        approval_code: "764253",
+        livemode: "false",
+        metadata: {},
+        failure_code: "",
+        failure_message: "",
+        redirect_url: "",
+        settlement_info: "",
+        refund_info: ""
+      };
+      res.status(200).json(resp);
+    }, 3000);
   } catch (ex) {
     res.status(400).json({ status: "Bad Request", message: ex.message });
   }

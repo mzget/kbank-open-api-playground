@@ -1,8 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { fetch } from "cross-fetch";
 
-const apikey = "pkey_prod_5BpmBr5LpqG84jYnDLPQe3Zv1OuhdN5dg";
-let chargeEndpoint = "http://localhost/api/charge";
 type AcceptBody = {
   amount: string;
   currency: string;
@@ -18,6 +16,10 @@ async function Checkout(req: NextApiRequest, res: NextApiResponse) {
   switch (method) {
     case "POST":
       try {
+        /**Call Charge API */
+
+        const apikey = "pkey_prod_5BpmBr5LpqG84jYnDLPQe3Zv1OuhdN5dg";
+        let chargeEndpoint = "http://localhost/api/charge";
         let data = {
           token: body.token,
           saveCard: body.saveCard,
