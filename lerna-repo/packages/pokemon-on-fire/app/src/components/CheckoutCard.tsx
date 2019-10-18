@@ -21,12 +21,12 @@ import KPayment from "react-kpayment";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     card: {
-      width: 350,
-      maxWidth: 440
+      width: "100%"
     },
     media: {
       height: 0,
-      paddingTop: "56.25%" // 16:9
+      paddingTop: "56.25%", // 16:9
+      backgroundSize: "contain"
     },
     button: {
       maxWidth: 180
@@ -75,7 +75,7 @@ export default function CheckoutCard(props: CheckoutCardProps) {
               formAction="https://us-central1-kbank-open-api.cloudfunctions.net/api/checkout"
               onFinish={onFinish}
               onProcess={onProcess}
-              onError={() => {}}
+              onError={() => { }}
               debug={true}
               attrs={{
                 scriptUrl:

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Head from "next/head";
+import ListSubheader from "@material-ui/core/ListSubheader";
 
 import CheckoutCard from "../src/components/CheckoutCard";
 import ReceiptCard from "../src/components/ReceiptCard";
@@ -11,7 +12,7 @@ enum CheckoutState {
   finished = 2
 }
 
-function CheckoutRender(props: any) {
+function CheckoutRenderer(props: any) {
   let [checkoutState, setCheckoutState] = React.useState(CheckoutState.none);
   let [form, setForm] = React.useState({});
   let [result, setResult] = React.useState({});
@@ -71,7 +72,8 @@ function Checkout(props: any) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <StyledShop className="StyledShop">
-        <CheckoutRender />
+        <ListSubheader component="div">Checkout</ListSubheader>
+        <CheckoutRenderer />
       </StyledShop>
     </React.Fragment>
   );
@@ -81,7 +83,7 @@ export default Checkout;
 const StyledShop = styled.div`
   display: flex;
   justify-content: center;
-  height: 100%;
+  flex-direction: column;
 `;
 const StyledProcessing = styled.div`
   display: flex;

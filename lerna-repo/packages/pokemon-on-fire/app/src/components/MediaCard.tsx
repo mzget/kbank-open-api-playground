@@ -15,11 +15,12 @@ import { buyPokemon } from "../store/cartReducer";
 
 const useStyles = makeStyles({
   card: {
-    width: 280,
+    width: "100%"
   },
   media: {
-    height: 200,
-  },
+    height: 300,
+    backgroundSize: "contain"
+  }
 });
 
 type MediaCardProps = {
