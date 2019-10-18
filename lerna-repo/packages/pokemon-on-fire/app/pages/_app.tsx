@@ -1,7 +1,7 @@
 import React from "react";
 import App from "next/app";
 import Head from "next/head";
-import Link from 'next/link'
+import Link from "next/link";
 import { ThemeProvider } from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
@@ -34,14 +34,7 @@ export default class MyApp extends App {
             <Link href="/">
               <img src={"/logo_kbtg.png"} className="App-logo" alt="logo" />
             </Link>
-            <div
-              style={{
-                width: "100%",
-                display: "flex",
-                alignSelf: "center",
-                margin: 8
-              }}
-            >
+            <div>
               <p>KBank Payment API Implementation</p>
               <span style={{ flex: 1 }} />
               <p>React Pokemon Shop</p>
@@ -65,6 +58,11 @@ export default class MyApp extends App {
               justify-content: start;
               color: white;
             }
+            .App-header div {
+              display: flex;
+              flex-direction: column;
+              margin-left: 8px;
+            }
             p {
               line-height: 0%;
               font-size: 16px;
@@ -72,6 +70,7 @@ export default class MyApp extends App {
             img {
               height: 48px;
               cursor: pointer;
+              margin: 8px;
             }
           `}</style>
         </ThemeProvider>
