@@ -2,16 +2,10 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { fetch } from "cross-fetch";
 
 const apikey = "pkey_prod_5BpmBr5LpqG84jYnDLPQe3Zv1OuhdN5dg";
-// https://dev-kpaymentgateway-services.kasikornbank.com/card/v2/charge
-let url = "";
+let chargeEndpoint = "https://apiportal.kasikornbank.com:12002/card/v2/charge";
 type AcceptBody = {
-  apikey: string;
   amount: string;
   currency: string;
-  source_type: string;
-  mode: string;
-  token: string;
-  reference_order: string;
 } & {
   paymentMethods: string;
   saveCard: true;
@@ -33,7 +27,7 @@ async function Checkout(req: NextApiRequest, res: NextApiResponse) {
           mode: "token",
           reference_order: "test123",
         };
-        const resp = await fetch(url, {
+        const resp = await fetch(chargeEndpoint, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
