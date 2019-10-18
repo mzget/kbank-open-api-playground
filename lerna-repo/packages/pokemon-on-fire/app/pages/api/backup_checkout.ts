@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { fetch } from "cross-fetch";
 
 const apikey = "pkey_prod_5BpmBr5LpqG84jYnDLPQe3Zv1OuhdN5dg";
-let chargeEndpoint = "http://localhost:3001/api/charge";
+let chargeEndpoint = "http://localhost/api/charge";
 type AcceptBody = {
   amount: string;
   currency: string;
@@ -25,16 +25,16 @@ async function Checkout(req: NextApiRequest, res: NextApiResponse) {
           amount: body.amount,
           currency: body.currency,
           mode: "token",
-          reference_order: "test123",
+          reference_order: "test123"
         };
         const resp = await fetch(chargeEndpoint, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             "Cache-Control": "no-cache",
-            "x-api-key": apikey,
+            "x-api-key": apikey
           },
-          body: JSON.stringify(data),
+          body: JSON.stringify(data)
         });
         if (resp.ok) {
           const result = await resp.json();

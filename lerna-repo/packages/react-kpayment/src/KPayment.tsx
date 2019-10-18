@@ -48,7 +48,8 @@ export default function KPayment(props: KPaymentProps) {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json"
-      }
+      },
+      mode: "no-cors"
     });
     if (resp.ok) {
       const result = await resp.json();
