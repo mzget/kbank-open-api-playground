@@ -12,8 +12,8 @@ type AcceptBody = {
 async function Charge (req: NextApiRequest, res: NextApiResponse)  {
     let { method } = req;
     let body : AcceptBody = req.body;
-    console.log("headers", req.rawHeaders)
-    let apiKey = req.rawHeaders["x-api-key"]
+    let apiKey = req.headers["x-api-key"]
+    console.log("apiKey", apiKey)
 
   switch (method) {
     case "POST":

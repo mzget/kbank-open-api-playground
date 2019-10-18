@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { fetch } from "cross-fetch";
 
 const apikey = "pkey_prod_5BpmBr5LpqG84jYnDLPQe3Zv1OuhdN5dg";
-let chargeEndpoint = "https://apiportal.kasikornbank.com:12002/card/v2/charge";
+let chargeEndpoint = "http://localhost:3001/api/charge";
 type AcceptBody = {
   amount: string;
   currency: string;
