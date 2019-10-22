@@ -35,9 +35,8 @@ export default class MyApp extends App {
               <img src={"/logo_kbtg.png"} className="App-logo" alt="logo" />
             </Link>
             <div>
-              <p>KBank Payment API Implementation</p>
-              <span style={{ flex: 1 }} />
-              <p>React Pokemon Shop</p>
+              <p>KBank Payment API</p>
+              <p>Referrence Implementation</p>
             </div>
           </header>
           <Container
@@ -49,6 +48,10 @@ export default class MyApp extends App {
               <Component {...pageProps} />
             </StoreProvider>
           </Container>
+          <footer className="App-footer">
+            <p>The Pokemon Shop</p>
+            <p>No commercial purpose</p>
+          </footer>
           <style jsx>{`
             .App-header {
               background-color: #282c34;
@@ -71,6 +74,14 @@ export default class MyApp extends App {
               height: 48px;
               cursor: pointer;
               margin: 8px;
+            }
+            .App-footer {
+              background-color: #282c34;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              color: white;
+              align-items: center;
             }
           `}</style>
         </ThemeProvider>

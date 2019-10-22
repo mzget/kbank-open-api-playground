@@ -2,6 +2,7 @@
   "name": "pokemon-shop",
   "version": "0.1.0",
   "private": true,
+  "author": "nattapon.rat@kbtg.tech",
   "scripts": {
     "dev": "next dev -p 3001",
     "build": "next build",

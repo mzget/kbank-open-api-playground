@@ -32,22 +32,29 @@ function CheckoutRenderer(props: any) {
   if (checkoutState === CheckoutState.finished) {
     return (
       <React.Fragment>
-        <ReceiptCard />
         <StyledProcessing>
           <img src="/pokeball.png" />
-          <p>Payment Finished</p>
-          <p>{JSON.stringify(result, undefined, 2)}</p>
+          <strong>Payment Finished</strong>
+          <strong>Request Form</strong>
+          {Object.entries(form).map(keyPair => (
+            <p key={keyPair[0]}>
+              {keyPair[0]} : {keyPair[1]}
+            </p>
+          ))}
+          <strong>Response Data</strong>
+          <span>{JSON.stringify(result, undefined, 2)}</span>
         </StyledProcessing>
+        <ReceiptCard />
       </React.Fragment>
     );
   } else {
     return (
       <React.Fragment>
-        <CheckoutCard onProcess={onProcessHandler} onFinish={onFinishHandler} />
         {checkoutState === CheckoutState.processing && (
           <StyledProcessing>
             <img src="/pokeball.png" />
-            <p>Payment Processing..., Plase wait</p>
+            <strong>Payment Processing..., Plase wait</strong>
+            <strong>Request Form</strong>
             {Object.entries(form).map(keyPair => (
               <p key={keyPair[0]}>
                 {keyPair[0]} : {keyPair[1]}
@@ -55,6 +62,7 @@ function CheckoutRenderer(props: any) {
             ))}
           </StyledProcessing>
         )}
+        <CheckoutCard onProcess={onProcessHandler} onFinish={onFinishHandler} />
       </React.Fragment>
     );
   }
