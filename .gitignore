@@ -3,3 +3,4 @@ code-sample/kbank.pentest.1/**
 lerna-repo/packages/pokemon-on-fire/next/**
 lerna-repo/packages/pokemon-on-fire/app/next/**
 twoway-ssl-sample/kbank.pentest.1
+lerna-repo/packages/pokemon-on-fire/app/certs

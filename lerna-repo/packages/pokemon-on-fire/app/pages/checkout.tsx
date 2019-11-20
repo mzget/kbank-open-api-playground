@@ -5,6 +5,9 @@ import ListSubheader from "@material-ui/core/ListSubheader";
 
 import CheckoutCard from "../src/components/CheckoutCard";
 import ReceiptCard from "../src/components/ReceiptCard";
+import { useStore } from "../src/store/storeContext";
+
+import { WebPayment } from "../src/webPayment/webPayment";
 
 enum CheckoutState {
   none = 0,
@@ -69,9 +72,44 @@ function CheckoutRenderer(props: any) {
 }
 
 function Checkout(props: any) {
+  const [state] = useStore();
+  let { pokemon } = state;
+
   React.useEffect(() => {
-    console.log("Checkout Page");
-  }, []);
+    if (window.PaymentRequest) {
+      const request = WebPayment(pokemon);
+      request
+        .show()
+        .then(response => {
+          // [process payment]
+          // send to a PSP etc.
+          console.log(response.toJSON());
+
+          response.complete("success");
+        })
+        .catch(err => {
+          console.warn(err);
+        });
+
+      // request
+      //   .canMakePayment()
+      //   .then(function(result) {
+      //     if (result) {
+      //       // Display PaymentRequest dialog on interaction with the existing checkout button
+      //       document
+      //         .getElementById("buyButton")
+      //         .addEventListener("click", onBuyClicked);
+      //     }
+      //   })
+      //   .catch(function(err) {
+      //     showErrorForDebugging(
+      //       "canMakePayment() error! " + err.name + " error: " + err.message
+      //     );
+      //   });
+    } else {
+      console.warn("PaymentRequest API not available.");
+    }
+  }, [pokemon]);
 
   return (
     <React.Fragment>
