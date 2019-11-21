@@ -5,6 +5,7 @@
   "author": "nattapon.rat@kbtg.tech",
   "scripts": {
     "dev": "next dev -p 3001",
+    "serve": "node server.js",
     "build": "next build",
     "start": "next start",
     "postbuild": "cp -r next ../functions"
