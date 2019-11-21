@@ -21,7 +21,9 @@ export function getGooglePaymentsConfiguration() {
           // @see {@link https://developers.google.com/pay/api/web/reference/request-objects#gateway}
           parameters: {
             gateway: "example",
-            gatewayMerchantId: "exampleGatewayMerchantId"
+            gatewayMerchantId: "exampleGatewayMerchantId",
+            "stripe:version": "2018-10-31",
+            "stripe:publishableKey": "YOUR_PUBLIC_STRIPE_KEY"
           }
         }
       }

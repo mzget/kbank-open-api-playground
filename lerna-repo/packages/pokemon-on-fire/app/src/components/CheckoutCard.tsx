@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import styled from "styled-components";
 import { fetch } from "cross-fetch";
 
@@ -17,6 +17,7 @@ import Button from "@material-ui/core/Button";
 
 import { useStore } from "../store/storeContext";
 import KPayment from "react-kpayment";
+import { WebPayment } from "../webPayment/webPayment";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -30,7 +31,8 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundSize: "contain"
     },
     button: {
-      maxWidth: 180
+      maxWidth: 180,
+      height: 40
     }
   })
 );
@@ -45,6 +47,26 @@ export default function CheckoutCard(props: CheckoutCardProps) {
   const [state] = useStore();
   let { pokemon } = state;
   let { onProcess, onFinish } = props;
+
+  const showPaymentReqAPI = useCallback(() => {
+    if (window.PaymentRequest) {
+      const request = WebPayment(pokemon);
+      request
+        .show()
+        .then(response => {
+          // [process payment]
+          // send to a PSP etc.
+          console.log(response.toJSON());
+
+          response.complete("success");
+        })
+        .catch(err => {
+          console.warn(err);
+        });
+    } else {
+      console.warn("PaymentRequest API not available.");
+    }
+  }, [pokemon]);
 
   return (
     <Card className={classes.card}>
@@ -98,6 +120,17 @@ export default function CheckoutCard(props: CheckoutCardProps) {
               className={classes.button}
             >
               Not yet ready
+            </Button>
+          </PayActionDiv>
+          <PayActionDiv>
+            <p>Payment Request API</p>
+            <Button
+              variant="contained"
+              color="secondary"
+              className={classes.button}
+              onClick={showPaymentReqAPI}
+            >
+              Show Form
             </Button>
           </PayActionDiv>
         </StyledCardActions>
