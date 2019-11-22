@@ -4,7 +4,7 @@
   "private": true,
   "author": "nattapon.rat@kbtg.tech",
   "scripts": {
-    "dev": "next dev -p 3001",
+    "dev": "next dev -p 3000",
     "serve": "node server.js",
     "build": "next build",
     "start": "next start",
@@ -16,11 +16,13 @@
     "cross-fetch": "^3.0.4",
     "next": "9.1.1",
     "react-kpayment": "file:../../react-kpayment",
+    "react-stripe-elements": "^6.0.1",
     "redux-actions": "^2.6.5",
     "styled-components": "^4.4.0"
   },
   "devDependencies": {
     "@types/node": "^12.11.1",
+    "@types/react-stripe-elements": "^1.3.5",
     "babel-plugin-styled-components": "^1.10.6",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1"

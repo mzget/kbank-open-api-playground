@@ -20,10 +20,11 @@ export function getGooglePaymentsConfiguration() {
           // Check with your payment gateway on the parameters to pass.
           // @see {@link https://developers.google.com/pay/api/web/reference/request-objects#gateway}
           parameters: {
-            gateway: "example",
-            gatewayMerchantId: "exampleGatewayMerchantId",
+            gateway: "stripe",
+            // gatewayMerchantId: "exampleGatewayMerchantId",
             "stripe:version": "2018-10-31",
-            "stripe:publishableKey": "YOUR_PUBLIC_STRIPE_KEY"
+            "stripe:publishableKey":
+              "pk_test_pErJdQLLVM4ivblGGn0vscMu00r8aGdkxW"
           }
         }
       }

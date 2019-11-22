@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import Head from "next/head";
+import { StripeProvider, Elements } from "react-stripe-elements";
 import ListSubheader from "@material-ui/core/ListSubheader";
 
-import { useStore } from "../src/store/storeContext";
 import { CheckoutRenderer } from "../src/components/CheckoutRenderer";
 
 function Checkout(props: any) {
@@ -12,6 +12,7 @@ function Checkout(props: any) {
       <Head>
         <title>Checkout</title>
         <link rel="icon" href="/favicon.ico" />
+        <script id="stripe-js" src="https://js.stripe.com/v3/"></script>
       </Head>
       <StyledShop className="StyledShop">
         <ListSubheader component="div">Checkout</ListSubheader>

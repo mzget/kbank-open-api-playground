@@ -18,6 +18,7 @@ import Button from "@material-ui/core/Button";
 import { useStore } from "../store/storeContext";
 import KPayment from "react-kpayment";
 import { WebPayment } from "../webPayment/webPayment";
+import StripeCheckout from "../stripe/StripeCheckout";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -111,6 +112,22 @@ export default function CheckoutCard(props: CheckoutCardProps) {
               }}
             />
           </PayActionDiv>
+
+          <PayActionDiv>
+            <p>Payment Request API</p>
+            <Button
+              variant="contained"
+              color="secondary"
+              className={classes.button}
+              onClick={showPaymentReqAPI}
+            >
+              Pay
+            </Button>
+          </PayActionDiv>
+          <PayActionDiv>
+            <p>With PSP</p>
+            <StripeCheckout />
+          </PayActionDiv>
           <PayActionDiv>
             <p>QR Payment</p>
             <Button
@@ -120,17 +137,6 @@ export default function CheckoutCard(props: CheckoutCardProps) {
               className={classes.button}
             >
               Not yet ready
-            </Button>
-          </PayActionDiv>
-          <PayActionDiv>
-            <p>Payment Request API</p>
-            <Button
-              variant="contained"
-              color="secondary"
-              className={classes.button}
-              onClick={showPaymentReqAPI}
-            >
-              Show Form
             </Button>
           </PayActionDiv>
         </StyledCardActions>
