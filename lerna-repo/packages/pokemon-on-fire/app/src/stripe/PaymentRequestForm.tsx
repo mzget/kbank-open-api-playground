@@ -29,7 +29,25 @@ class PaymentRequestForm extends React.Component<
     paymentRequest.on("token", ({ complete, token, ...data }) => {
       console.log("Received Stripe token: ", token);
       console.log("Received customer information: ", data);
-      complete("success");
+      // Send the token to your server to charge it!
+      fetch("/api/charges", {
+        method: "POST",
+        body: JSON.stringify({ token: token.id }),
+        headers: { "content-type": "application/json" }
+      }).then(function(response) {
+        if (response.ok) {
+          // Report to the browser that the payment was successful, prompting
+          // it to close the browser payment interface.
+
+          complete("success");
+        } else {
+          // Report to the browser that the payment failed, prompting it to
+          // re-show the payment interface, or show an error message and close
+          // the payment interface.
+
+          complete("fail");
+        }
+      });
     });
 
     paymentRequest
