@@ -17,22 +17,27 @@ class PaymentRequestForm extends React.Component<
 
     // For full documentation of the available paymentRequest options, see:
     // https://stripe.com/docs/stripe.js#the-payment-request-object
-    const paymentRequest = props.stripe.paymentRequest({
+    const req = {
       country: "US",
       currency: "usd",
       total: {
         label: "Total due",
-        amount: 1
+        amount: 100
       }
-    });
+    };
+    const paymentRequest = props.stripe.paymentRequest(req);
 
     paymentRequest.on("token", ({ complete, token, ...data }) => {
       console.log("Received Stripe token: ", token);
       console.log("Received customer information: ", data);
       // Send the token to your server to charge it!
-      fetch("/api/charges", {
+      fetch("/api/stripe_charges", {
         method: "POST",
-        body: JSON.stringify({ token: token.id }),
+        body: JSON.stringify({
+          token: token.id,
+          amount: req.total.amount,
+          currency: req.currency
+        }),
         headers: { "content-type": "application/json" }
       }).then(function(response) {
         if (response.ok) {

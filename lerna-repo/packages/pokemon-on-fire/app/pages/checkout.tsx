@@ -12,7 +12,6 @@ function Checkout(props: any) {
       <Head>
         <title>Checkout</title>
         <link rel="icon" href="/favicon.ico" />
-        <script id="stripe-js" src="https://js.stripe.com/v3/"></script>
       </Head>
       <StyledShop className="StyledShop">
         <ListSubheader component="div">Checkout</ListSubheader>
