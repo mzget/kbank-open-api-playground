@@ -97,8 +97,8 @@ export default function CheckoutCard(props: CheckoutCardProps) {
             <p>Credit/Debit Card</p>
             <KPayment
               formAction="https://us-central1-kbank-open-api.cloudfunctions.net/api/checkout"
-              onFinish={onFinish}
               onProcess={onProcess}
+              onFinish={onFinish}
               onError={() => {}}
               debug={true}
               attrs={{
