@@ -1,4 +1,5 @@
 import * as express from "express";
+import fetch from "cross-fetch";
 
 type AcceptBody = {
   amount: string;
@@ -11,35 +12,36 @@ type AcceptBody = {
 };
 export async function Charge(req: express.Request, res: express.Response) {
   let body: AcceptBody = req.body;
-  let apiKey = req.header("x-api-key");
-  console.log("apiKey", apiKey);
 
   try {
-    let resp = {
-      id: "chrg_prod_47b66904ca59846c6be83cf444870a2f2",
-      object: "charge",
-      amount: body.amount,
-      currency: body.currency,
-      transaction_state: "Auhtorized",
-      source: {
-        id: "card_test_42f00571ac396ad600ce8e72b0e58def1",
-        object: "card",
-        brand: "MASTERCARD",
-        last4: "514950******9007",
-        issuer_bank: "Kasikornbank Public Limited"
+    const chargeUrl =
+      "https://apiportal.kasikornbank.com:12002/kpgw/card/v1/charge";
+    const opts: any = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Partner-Id": "{Partner-Id}",
+        "Partner-Secret": "{Partner-Secret}",
+        "x-api-key": "{SECRET_KEY}"
       },
-      created: "20180322121944000",
-      status: "success",
-      approval_code: "764253",
-      livemode: "false",
-      metadata: {},
-      failure_code: "",
-      failure_message: "",
-      redirect_url: "",
-      settlement_info: "",
-      refund_info: ""
+      credentials: "omit",
+      body: JSON.stringify({
+        amount: body.amount,
+        currency: body.currency,
+        description: body.description,
+        source_type: body.source_type,
+        mode: body.mode,
+        token: body.token,
+        reference_order: body.reference_order
+      })
     };
-    res.status(200).json(resp);
+
+    /**
+     * Note, For production two-way SSL authentication is require for call Open-API.
+     */
+    const resp = await fetch(chargeUrl, opts);
+    const data = await resp.json();
+    res.status(200).json(data);
   } catch (ex) {
     res.status(400).json({ status: "Bad Request", message: ex.message });
   }
