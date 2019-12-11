@@ -26,9 +26,20 @@ function PaymentRequestForm(props: InjectedProps) {
       currency: "thb",
       total: {
         label: "Total due",
-        amount: parseInt(pokemon.price, 10) * 100,
+        amount: parseInt(pokemon.price, 10) * 100
       },
-      requestShipping: true
+      requestShipping: true,
+      // `shippingOptions` is optional at this point:
+      shippingOptions: [
+        // The first shipping option in this list appears as the default
+        // option in the browser payment interface.
+        {
+          id: "free-shipping",
+          label: "Free shipping",
+          detail: "Arrives in 5 to 7 days",
+          amount: 0
+        }
+      ]
     };
 
     const paymentRequest = props.stripe.paymentRequest(req);
