@@ -125,7 +125,7 @@ export default function CheckoutCard(props: CheckoutCardProps) {
             </Button>
           </PayActionDiv>
           <PayActionDiv>
-            <p>With PSP</p>
+            <p>Payment Request API With PSP</p>
             <StripeCheckout />
           </PayActionDiv>
           <PayActionDiv>

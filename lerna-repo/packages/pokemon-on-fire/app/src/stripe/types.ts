@@ -1,4 +1,4 @@
 export type InjectedProps = {
-  stripe: any;
-  elements: any;
+  stripe?: any;
+  elements?: any;
 };

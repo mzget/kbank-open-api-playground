@@ -2,7 +2,6 @@ import React from "react";
 import { Elements, StripeProvider } from "react-stripe-elements";
 
 import { STRIPE_KEY } from "../const";
-// import InjectedCheckoutForm from "./StripeCheckoutForm";
 import PaymentRequestForm from "./PaymentRequestForm";
 
 class StripeCheckout extends React.Component<any, { stripe: string | null }> {

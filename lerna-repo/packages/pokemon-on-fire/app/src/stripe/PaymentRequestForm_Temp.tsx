@@ -1,24 +1,20 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React from "react";
 import {
   injectStripe,
   PaymentRequestButtonElement
 } from "react-stripe-elements";
 import { InjectedProps } from "./types";
 
-import { useStore } from "../store/storeContext";
+class PaymentRequestForm extends React.Component<
+  InjectedProps,
+  {
+    canMakePayment: boolean;
+    paymentRequest: any;
+  }
+> {
+  constructor(props) {
+    super(props);
 
-function PaymentRequestForm(props: InjectedProps) {
-  const [store] = useStore();
-  let { pokemon } = store;
-
-  const [canMakePayment, setCanMakePayment] = useState(false);
-  const [paymentObj, setPaymentObj] = useState(undefined);
-
-  useEffect(() => {
-    initPaymentRequest();
-  }, []);
-
-  const initPaymentRequest = useCallback(() => {
     // For full documentation of the available paymentRequest options, see:
     // https://stripe.com/docs/stripe.js#the-payment-request-object
     const req = {
@@ -26,12 +22,11 @@ function PaymentRequestForm(props: InjectedProps) {
       currency: "thb",
       total: {
         label: "Total due",
-        amount: parseInt(pokemon.price, 10) * 100,
-      },
-      requestShipping: true
+        amount: 100
+      }
     };
-
     const paymentRequest = props.stripe.paymentRequest(req);
+
     paymentRequest.on("token", ({ complete, token, ...data }) => {
       console.log("Received Stripe token: ", token);
       console.log("Received customer information: ", data);
@@ -63,36 +58,42 @@ function PaymentRequestForm(props: InjectedProps) {
     paymentRequest
       .canMakePayment()
       .then(result => {
-        setCanMakePayment(!!result);
+        this.setState({ canMakePayment: !!result }, () =>
+          console.log(this.state)
+        );
       })
       .catch(err => {
         console.warn("canMakePayment fail", err);
       });
 
-    setPaymentObj(paymentRequest);
-  }, [props, pokemon]);
+    this.state = {
+      canMakePayment: false,
+      paymentRequest
+    };
+  }
 
-  return canMakePayment ? (
-    <div>
-      <PaymentRequestButtonElement
-        paymentRequest={paymentObj}
-        className="PaymentRequestButton"
-        style={{
-          // For more details on how to style the Payment Request Button, see:
-          // https://stripe.com/docs/elements/payment-request-button#styling-the-element
-          paymentRequestButton: {
-            theme: "light-outline",
-            height: "44px"
+  render() {
+    return this.state.canMakePayment ? (
+      <div>
+        <PaymentRequestButtonElement
+          paymentRequest={this.state.paymentRequest}
+          className="PaymentRequestButton"
+          style={{
+            // For more details on how to style the Payment Request Button, see:
+            // https://stripe.com/docs/elements/payment-request-button#styling-the-element
+            paymentRequestButton: {
+              theme: "light-outline",
+              height: "44px"
+            }
+          }}
+        />
+        <style jsx>{`
+          div {
+            width: 50%;
           }
-        }}
-      />
-      <style jsx>{`
-        div {
-          width: 50%;
-        }
-      `}</style>
-    </div>
-  ) : null;
+        `}</style>
+      </div>
+    ) : null;
+  }
 }
-
-export default injectStripe(PaymentRequestForm);
+export default injectStripe(PaymentRequestForm) as React.ComponentClass<any>;
