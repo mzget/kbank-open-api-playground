@@ -20,15 +20,11 @@ async function Charge(req: NextApiRequest, res: NextApiResponse) {
   switch (method) {
     case "POST":
       try {
-        // const paymentIntent = await stripe.paymentIntents.create({
-        //   amount: Number(body.amount),
-        //   currency: body.currency
-        // });
         const charge = await stripe.charges.create({
           amount: Number(body.amount),
           currency: body.currency,
           source: body.token,
-          receipt_email: "nattapon.r@live.com",
+          receipt_email: "nattapon.rat@kbtg.tech",
           description: "Example charge"
         });
         res.status(200).json(charge);
