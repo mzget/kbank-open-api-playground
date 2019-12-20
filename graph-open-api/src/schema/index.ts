@@ -43,7 +43,6 @@ export const typeDefs = gql`
     partnerSecret: String!
     requestDt: String!
     merchantId: String!
-    terminalId: String!
     qrType: String!
     txnAmount: String!
     txnCurrencyCode: String!
@@ -52,6 +51,7 @@ export const typeDefs = gql`
     reference3: String
     reference4: String
     metadata: String
+    terminalId: String
   }
   input QRInput {
     partnerTxnUid: String!

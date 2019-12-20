@@ -7,19 +7,20 @@ export const resolvers = {
     books: () => []
   },
   Mutation: {
-    requestQR: async (_, data, { dataSources }) => {
+    requestQR: async (_, { data }, { dataSources }) => {
       const qrData = await dataSources.qrAPI.requestQR(data);
+      console.log("res", qrData);
       return qrData;
     },
-    cancelQR: async (_, data, { dataSources }) => {
+    cancelQR: async (_, { data }, { dataSources }) => {
       const qrData = await dataSources.qrAPI.cancelQR(data);
       return qrData;
     },
-    inquiryQR: async (_, data, { dataSources }) => {
+    inquiryQR: async (_, { data }, { dataSources }) => {
       const qrData = await dataSources.qrAPI.inquiryQR(data);
       return qrData;
     },
-    voidQR: async (_, data, { dataSources }) => {
+    voidQR: async (_, { data }, { dataSources }) => {
       const qrData = await dataSources.qrAPI.voidQR(data);
       return qrData;
     }

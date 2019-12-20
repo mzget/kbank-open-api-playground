@@ -15,7 +15,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@types/node-fetch": "^2.5.4",
     "apollo-datasource-rest": "^0.6.10",
     "apollo-server-express": "^2.9.14",
     "cookie-parser": "~1.4.4",
@@ -28,6 +27,7 @@
     "morgan": "~1.9.1"
   },
   "devDependencies": {
+    "@types/node-fetch": "^2.5.4",
     "@types/cookie-parser": "^1.4.2",
     "@types/debug": "^4.1.5",
     "@types/dot": "^1.1.3",
