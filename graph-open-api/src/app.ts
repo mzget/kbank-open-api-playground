@@ -3,11 +3,29 @@ import express from "express";
 import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
-
+import { ApolloServer, gql } from "apollo-server-express";
+import { typeDefs } from "./schema";
+import { resolvers } from "./resolver";
 import indexRouter from "./routes/index";
 import usersRouter from "./routes/users";
 
+import QRAPI from "./datasources/QrAPI";
+
 const app = express();
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  dataSources: () => ({
+    qrAPI: new QRAPI()
+  })
+});
+
+server.applyMiddleware({ app });
+
+app.listen({ port: process.env.PORT }, () =>
+  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+);
 
 // view engine setup
 // app.set("views", path.join(__dirname, "views"));
