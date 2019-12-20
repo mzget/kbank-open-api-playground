@@ -9,6 +9,11 @@ class QrAPI extends RESTDataSource {
     const response = await this.post("qr_request", data);
     return response;
   }
+
+  async cancelQR(data: any) {
+    const response = await this.post("qr_cancel", data);
+    return response;
+  }
 }
 
 export default QrAPI;

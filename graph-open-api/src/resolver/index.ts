@@ -10,6 +10,10 @@ export const resolvers = {
     requestQR: async (_, data, { dataSources }) => {
       const qrData = await dataSources.qrAPI.requestQR(data);
       return qrData;
+    },
+    cancelQR: async (_, data, { dataSources }) => {
+      const qrData = await dataSources.qrAPI.cancelQR(data);
+      return qrData;
     }
   }
 };
