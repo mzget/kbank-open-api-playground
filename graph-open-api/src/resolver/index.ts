@@ -4,7 +4,7 @@ import QRAPI from "../datasources/QRAPI";
 // schema. This resolver retrieves books from the "books" array above.
 export const resolvers = {
   Query: {
-    books: () => books
+    books: () => []
   },
   Mutation: {
     requestQR: async (_, data, { dataSources }) => {
@@ -14,17 +14,14 @@ export const resolvers = {
     cancelQR: async (_, data, { dataSources }) => {
       const qrData = await dataSources.qrAPI.cancelQR(data);
       return qrData;
+    },
+    inquiryQR: async (_, data, { dataSources }) => {
+      const qrData = await dataSources.qrAPI.inquiryQR(data);
+      return qrData;
+    },
+    voidQR: async (_, data, { dataSources }) => {
+      const qrData = await dataSources.qrAPI.voidQR(data);
+      return qrData;
     }
   }
 };
-
-const books = [
-  {
-    title: "Harry Potter and the Chamber of Secrets",
-    author: "J.K. Rowling"
-  },
-  {
-    title: "Jurassic Park",
-    author: "Michael Crichton"
-  }
-];

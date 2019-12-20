@@ -33,7 +33,9 @@ export const typeDefs = gql`
 
   type Mutation {
     requestQR(data: RequestQRInput): RequestQR
-    cancelQR(data: CancelQRInput): QRStatus
+    cancelQR(data: QRInput): QRStatus
+    inquiryQR(data: QRInput): QRStatus
+    voidQR(data: QRInput): QRStatus
   }
   input RequestQRInput {
     partnerTxnUid: String!
@@ -51,7 +53,7 @@ export const typeDefs = gql`
     reference4: String
     metadata: String
   }
-  input CancelQRInput {
+  input QRInput {
     partnerTxnUid: String!
     partnerId: String!
     partnerSecret: String!
