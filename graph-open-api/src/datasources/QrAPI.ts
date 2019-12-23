@@ -1,5 +1,12 @@
 import { RESTDataSource } from "apollo-datasource-rest";
 
+export interface IQRAPI {
+  requestQR: (data: any) => any;
+  cancelQR: (data: any) => any;
+  inquireQR: (data: any) => any;
+  voidQR: (data: any) => any;
+}
+
 class QrAPI extends RESTDataSource {
   constructor() {
     super();
@@ -14,7 +21,7 @@ class QrAPI extends RESTDataSource {
     const response = await this.post("qr_cancel", data);
     return response;
   }
-  async inquiryQR(data: any) {
+  async inquireQR(data: any) {
     const response = await this.post("inquire_payment/v2", data);
     return response;
   }

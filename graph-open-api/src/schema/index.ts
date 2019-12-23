@@ -29,12 +29,18 @@ export const typeDefs = gql`
     terminalId: String
     qrType: String
     origPartnerTxnUid: String
+    statusCode: String
+    errorCode: String
+    errorDesc: String
+    txnStatus: String
+    txnNo: String
+    loyaltyId: String
   }
 
   type Mutation {
     requestQR(data: RequestQRInput): RequestQR
     cancelQR(data: QRInput): QRStatus
-    inquiryQR(data: QRInput): QRStatus
+    inquireQR(data: QRInput): QRStatus
     voidQR(data: QRInput): QRStatus
   }
   input RequestQRInput {
@@ -59,9 +65,9 @@ export const typeDefs = gql`
     partnerSecret: String!
     requestDt: String!
     merchantId: String!
-    terminalId: String!
     qrType: String!
     origPartnerTxnUid: String!
+    terminalId: String
   }
 
   # The "Query" type is special: it lists all of the available queries that

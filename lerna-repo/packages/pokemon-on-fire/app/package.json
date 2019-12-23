@@ -19,6 +19,7 @@
     "cross-fetch": "^3.0.4",
     "graphql": "^14.5.8",
     "next": "9.1.1",
+    "qrcode.react": "^1.0.0",
     "react-kpayment": "file:../../react-kpayment",
     "react-stripe-elements": "^6.0.1",
     "redux-actions": "^2.6.5",
