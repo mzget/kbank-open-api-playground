@@ -12,6 +12,7 @@ export const resolvers = {
   Mutation: {
     requestQR: async (_, { data }, { dataSources }: DataSource) => {
       const result = await dataSources.qrAPI.requestQR(data);
+      console.log("requestQR", result);
       return result;
     },
     cancelQR: async (_, { data }, { dataSources }: DataSource) => {

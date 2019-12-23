@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import Head from "next/head";
-import { StripeProvider, Elements } from "react-stripe-elements";
 import ListSubheader from "@material-ui/core/ListSubheader";
 
-import { CheckoutRenderer } from "../src/components/CheckoutRenderer";
+import { CheckoutRenderer } from "../src/components/checkout/CheckoutRenderer";
 
 function Checkout(props: any) {
   return (

@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback } from "react";
 import styled from "styled-components";
 import { fetch } from "cross-fetch";
+import Link from "next/link";
 
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -15,10 +16,10 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import Button from "@material-ui/core/Button";
 
-import { useStore } from "../store/storeContext";
+import { useStore } from "../../store/storeContext";
 import KPayment from "react-kpayment";
-import { WebPayment } from "../webPayment/webPayment";
-import StripeCheckout from "../stripe/StripeCheckout";
+import { WebPayment } from "../../webPayment/webPayment";
+import StripeCheckout from "../../stripe/StripeCheckout";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -112,7 +113,19 @@ export default function CheckoutCard(props: CheckoutCardProps) {
               }}
             />
           </PayActionDiv>
-
+          <PayActionDiv>
+            <p>QR Payment</p>
+            <Link href="/payments/qrpayment">
+              <Button
+                variant="contained"
+                color="secondary"
+                className={classes.button}
+              >
+                Scan QR
+              </Button>
+            </Link>
+          </PayActionDiv>
+          <p>WebPayments Demo</p>
           <PayActionDiv>
             <p>Payment Request API</p>
             <Button
@@ -127,17 +140,6 @@ export default function CheckoutCard(props: CheckoutCardProps) {
           <PayActionDiv>
             <p>Payment Request API With PSP</p>
             <StripeCheckout />
-          </PayActionDiv>
-          <PayActionDiv>
-            <p>QR Payment</p>
-            <Button
-              variant="contained"
-              color="secondary"
-              disabled
-              className={classes.button}
-            >
-              Not yet ready
-            </Button>
           </PayActionDiv>
         </StyledCardActions>
       </CardActions>

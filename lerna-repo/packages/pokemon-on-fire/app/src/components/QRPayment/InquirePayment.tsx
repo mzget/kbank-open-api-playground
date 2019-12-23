@@ -3,6 +3,9 @@ import { gql } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
 import Button from "@material-ui/core/Button";
 
+import { OPEN_API } from "../../const";
+import { useStore } from "../../store/storeContext";
+
 const INQUIRE_QR = gql`
   mutation InquireQR($data: QRInput) {
     inquireQR(data: $data) {
@@ -24,18 +27,20 @@ const INQUIRE_QR = gql`
 `;
 
 export function InquireQR() {
+  const [store] = useStore();
+  const { partnerTxnUid } = store;
   const [inquireQR, inquireStatus] = useMutation(INQUIRE_QR);
   const inquireQRHandler = React.useCallback(() => {
     inquireQR({
       variables: {
         data: {
-          partnerId: "PTR3318260",
-          partnerSecret: "2ca493cfb15f4bdeb7d6379424601ac6",
-          partnerTxnUid: new Date().getTime().toString(),
+          partnerId: OPEN_API.PARTNER_ID,
+          partnerSecret: OPEN_API.PARTNER_SECRET,
+          merchantId: OPEN_API.MERCHANT_ID,
+          partnerTxnUid: partnerTxnUid,
           requestDt: new Date().toISOString(),
-          merchantId: "KB377712394091",
           qrType: "3",
-          origPartnerTxnUid: ""
+          origPartnerTxnUid: partnerTxnUid
         }
       }
     });
