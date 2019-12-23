@@ -6,9 +6,9 @@ import Button from "@material-ui/core/Button";
 import { OPEN_API } from "../../const";
 import { useStore } from "../../store/storeContext";
 
-const INQUIRE_QR = gql`
-  mutation InquireQR($data: QRInput) {
-    inquireQR(data: $data) {
+const CANCEL_QR = gql`
+  mutation cancelQR($data: QRInput) {
+    cancelQR(data: $data) {
       partnerTxnUid
       partnerId
       partnerSecret
@@ -26,12 +26,12 @@ const INQUIRE_QR = gql`
   }
 `;
 
-export function InquireQR() {
+export function VoidQR() {
   const [store] = useStore();
   const { partnerTxnUid } = store;
-  const [inquireQR, inquireStatus] = useMutation(INQUIRE_QR);
-  const inquireQRHandler = React.useCallback(() => {
-    inquireQR({
+  const [cancelQR, cancelQRStatus] = useMutation(CANCEL_QR);
+  const onClickHandler = React.useCallback(() => {
+    cancelQR({
       variables: {
         data: {
           partnerId: OPEN_API.PARTNER_ID,
@@ -46,19 +46,19 @@ export function InquireQR() {
     });
   }, []);
 
-  let { loading, error, data } = inquireStatus;
+  let { loading, error, data } = cancelQRStatus;
   if (error) return <p>Error :(</p>;
 
   return (
     <div>
-      <Button variant="contained" color="secondary" onClick={inquireQRHandler}>
-        Inquire Status
+      <Button variant="contained" color="secondary" onClick={onClickHandler}>
+        Cancel QR
       </Button>
       {loading ? <p>Loading...</p> : null}
       {error ? <p>Error :(</p> : null}
-      {data && data.inquireQR && (
+      {data && data.cancelQR && (
         <textarea
-          defaultValue={JSON.stringify(data.inquireQR, undefined, 4)}
+          defaultValue={JSON.stringify(data.cancelQR, undefined, 2)}
         ></textarea>
       )}
       <style jsx>{`

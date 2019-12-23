@@ -13,9 +13,6 @@ function QRPayment() {
         QR Payment
       </Typography>
       <RequestQR />
-      <Typography variant="h6" gutterBottom>
-        QR Status
-      </Typography>
       <InquireQR />
       <CancelQR />
       <style jsx>{`
@@ -24,6 +21,7 @@ function QRPayment() {
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          width: 100%;
         }
       `}</style>
     </div>

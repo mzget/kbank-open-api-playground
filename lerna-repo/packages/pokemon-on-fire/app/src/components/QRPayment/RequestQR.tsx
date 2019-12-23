@@ -26,7 +26,7 @@ export function RequestQR() {
   const { pokemon, partnerTxnUid } = store;
 
   const onCompleatedHandler = React.useCallback((data: any) => {
-    console.log("completed", data.requestQR);
+    console.log("completed", data.requestQR.partnerTxnUid);
 
     dispatch(addPartnerTrx(data.requestQR.partnerTxnUid));
   }, []);
@@ -62,6 +62,11 @@ export function RequestQR() {
   return (
     <div>
       <QRCode value={result.qrCode} size={256} />
+      <style jsx>{`
+        div {
+          margin: 4px;
+        }
+      `}</style>
     </div>
   );
 }

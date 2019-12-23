@@ -3,6 +3,9 @@ import { gql } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
 import Button from "@material-ui/core/Button";
 
+import { OPEN_API } from "../../const";
+import { useStore } from "../../store/storeContext";
+
 const CANCEL_QR = gql`
   mutation cancelQR($data: QRInput) {
     cancelQR(data: $data) {
@@ -24,18 +27,20 @@ const CANCEL_QR = gql`
 `;
 
 export function CancelQR() {
+  const [store] = useStore();
+  const { partnerTxnUid } = store;
   const [cancelQR, cancelQRStatus] = useMutation(CANCEL_QR);
   const onClickHandler = React.useCallback(() => {
     cancelQR({
       variables: {
         data: {
-          partnerId: "PTR3318260",
-          partnerSecret: "2ca493cfb15f4bdeb7d6379424601ac6",
-          partnerTxnUid: new Date().getTime().toString(),
+          partnerId: OPEN_API.PARTNER_ID,
+          partnerSecret: OPEN_API.PARTNER_SECRET,
+          merchantId: OPEN_API.MERCHANT_ID,
+          partnerTxnUid: partnerTxnUid,
           requestDt: new Date().toISOString(),
-          merchantId: "KB377712394091",
           qrType: "3",
-          origPartnerTxnUid: ""
+          origPartnerTxnUid: partnerTxnUid
         }
       }
     });
@@ -44,18 +49,28 @@ export function CancelQR() {
   let { loading, error, data } = cancelQRStatus;
   if (error) return <p>Error :(</p>;
 
-  console.log("data", data);
-
   return (
     <div>
       <Button variant="contained" color="secondary" onClick={onClickHandler}>
-        CancelQR
+        Cancel QR
       </Button>
       {loading ? <p>Loading...</p> : null}
       {error ? <p>Error :(</p> : null}
       {data && data.cancelQR && (
-        <p>{JSON.stringify(data.cancelQR, undefined, 2)}</p>
+        <textarea
+          defaultValue={JSON.stringify(data.cancelQR, undefined, 2)}
+        ></textarea>
       )}
+      <style jsx>{`
+        div {
+          width: 100%;
+          margin: 4px;
+        }
+        textarea {
+          width: 100%;
+          height: 150px;
+        }
+      `}</style>
     </div>
   );
 }

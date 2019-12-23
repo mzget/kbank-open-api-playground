@@ -17,6 +17,7 @@ export const resolvers = {
     },
     cancelQR: async (_, { data }, { dataSources }: DataSource) => {
       const result = await dataSources.qrAPI.cancelQR(data);
+      console.log("cancelQR", result);
       return result;
     },
     inquireQR: async (_, { data }, { dataSources }: DataSource) => {
@@ -26,6 +27,7 @@ export const resolvers = {
     },
     voidQR: async (_, { data }, { dataSources }: DataSource) => {
       const result = await dataSources.qrAPI.voidQR(data);
+      console.log("voidQR", result);
       return result;
     }
   }
