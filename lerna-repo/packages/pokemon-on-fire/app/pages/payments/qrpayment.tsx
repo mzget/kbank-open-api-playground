@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { RequestQR } from "../../src/components/QRPayment/RequestQR";
 import { InquireQR } from "../../src/components/QRPayment/InquirePayment";
 import { CancelQR } from "../../src/components/QRPayment/CancelQR";
+import { VoidQR } from "../../src/components/QRPayment/VoidQR";
 
 function QRPayment() {
   return (
@@ -15,6 +16,7 @@ function QRPayment() {
       <RequestQR />
       <InquireQR />
       <CancelQR />
+      <VoidQR />
       <style jsx>{`
         div {
           display: flex;

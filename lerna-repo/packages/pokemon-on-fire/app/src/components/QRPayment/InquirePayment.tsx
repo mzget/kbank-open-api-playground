@@ -44,7 +44,7 @@ export function InquireQR() {
         }
       }
     });
-  }, []);
+  }, [partnerTxnUid]);
 
   let { loading, error, data } = inquireStatus;
   if (error) return <p>Error :(</p>;

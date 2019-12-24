@@ -6,9 +6,9 @@ import Button from "@material-ui/core/Button";
 import { OPEN_API } from "../../const";
 import { useStore } from "../../store/storeContext";
 
-const CANCEL_QR = gql`
-  mutation cancelQR($data: QRInput) {
-    cancelQR(data: $data) {
+const VOID_QR = gql`
+  mutation voidQR($data: QRInput) {
+    voidQR(data: $data) {
       partnerTxnUid
       partnerId
       partnerSecret
@@ -29,9 +29,9 @@ const CANCEL_QR = gql`
 export function VoidQR() {
   const [store] = useStore();
   const { partnerTxnUid } = store;
-  const [cancelQR, cancelQRStatus] = useMutation(CANCEL_QR);
+  const [voidQR, voidQRStatus] = useMutation(VOID_QR);
   const onClickHandler = React.useCallback(() => {
-    cancelQR({
+    voidQR({
       variables: {
         data: {
           partnerId: OPEN_API.PARTNER_ID,
@@ -44,21 +44,21 @@ export function VoidQR() {
         }
       }
     });
-  }, []);
+  }, [partnerTxnUid]);
 
-  let { loading, error, data } = cancelQRStatus;
+  let { loading, error, data } = voidQRStatus;
   if (error) return <p>Error :(</p>;
 
   return (
     <div>
       <Button variant="contained" color="secondary" onClick={onClickHandler}>
-        Cancel QR
+        Void QR
       </Button>
       {loading ? <p>Loading...</p> : null}
       {error ? <p>Error :(</p> : null}
-      {data && data.cancelQR && (
+      {data && data.voidQR && (
         <textarea
-          defaultValue={JSON.stringify(data.cancelQR, undefined, 2)}
+          defaultValue={JSON.stringify(data.voidQR, undefined, 2)}
         ></textarea>
       )}
       <style jsx>{`

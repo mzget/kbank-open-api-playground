@@ -44,7 +44,7 @@ export function CancelQR() {
         }
       }
     });
-  }, []);
+  }, [partnerTxnUid]);
 
   let { loading, error, data } = cancelQRStatus;
   if (error) return <p>Error :(</p>;

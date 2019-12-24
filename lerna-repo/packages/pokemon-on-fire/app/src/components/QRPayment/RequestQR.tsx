@@ -26,8 +26,6 @@ export function RequestQR() {
   const { pokemon, partnerTxnUid } = store;
 
   const onCompleatedHandler = React.useCallback((data: any) => {
-    console.log("completed", data.requestQR.partnerTxnUid);
-
     dispatch(addPartnerTrx(data.requestQR.partnerTxnUid));
   }, []);
 
