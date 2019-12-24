@@ -58,7 +58,7 @@ export function RequestQR() {
   const { requestQR: result } = data;
 
   return (
-    <div>
+    <div style={{ display: "flex", justifyContent: "center" }}>
       <QRCode value={result.qrCode} size={256} />
       <style jsx>{`
         div {
