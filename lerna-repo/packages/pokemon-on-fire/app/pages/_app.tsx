@@ -26,6 +26,7 @@ export default class MyApp extends App {
       <React.Fragment>
         <Head>
           <title>The Pokemon-Shop</title>
+          <script id="stripe-js" src="https://js.stripe.com/v3/"></script>
         </Head>
         <ThemeProvider theme={theme}>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}

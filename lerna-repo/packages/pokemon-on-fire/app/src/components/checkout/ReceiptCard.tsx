@@ -10,10 +10,9 @@ import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import Button from "@material-ui/core/Button";
 
-import { useStore } from "../store/storeContext";
+import { useStore } from "../../store/storeContext";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

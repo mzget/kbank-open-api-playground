@@ -4,18 +4,15 @@ export function WebPayment(params: any) {
   // Supported payment methods
   const paymentMethods = [
     {
+      supportedMethods: "https://google.com/pay",
+      data: getGooglePaymentsConfiguration()
+    },
+    {
       supportedMethods: "basic-card",
       data: {
         supportedNetworks: ["visa", "mastercard", "jcb"],
         supportedTypes: ["credit", "debit"]
       }
-    },
-    {
-      supportedMethods: "https://bobpay.xyz"
-    },
-    {
-      supportedMethods: "https://google.com/pay",
-      data: getGooglePaymentsConfiguration()
     }
   ];
   const paymentDetails = {
@@ -31,10 +28,10 @@ export function WebPayment(params: any) {
     }
   };
   const paymentOptions = {
-    // requestShipping: true
-    // requestPayerEmail: true,
-    // requestPayerPhone: true,
-    // requestPayerName: true,
+    // requestShipping: true,
+    requestPayerEmail: true,
+    requestPayerPhone: true,
+    requestPayerName: true
     // shippingType: "delivery"
   };
 

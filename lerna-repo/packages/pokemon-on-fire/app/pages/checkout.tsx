@@ -3,8 +3,7 @@ import styled from "styled-components";
 import Head from "next/head";
 import ListSubheader from "@material-ui/core/ListSubheader";
 
-import { useStore } from "../src/store/storeContext";
-import { CheckoutRenderer } from "../src/components/CheckoutRenderer";
+import { CheckoutRenderer } from "../src/components/checkout/CheckoutRenderer";
 
 function Checkout(props: any) {
   return (

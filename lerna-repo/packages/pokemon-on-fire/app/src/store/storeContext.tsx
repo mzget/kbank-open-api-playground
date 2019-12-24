@@ -10,7 +10,8 @@ export const initialState = {
     description:
       "Whenever Pikachu comes across something new, it blasts it with a jolt of electricity. If you come across a blackened berry, it's evidence that this Pokémon mistook the intensity of its charge.",
     price: "1200.00"
-  }
+  },
+  partnerTxnUid: ""
 };
 const StoreContext = React.createContext<
   [any, React.Dispatch<{ type: string; payload: any }>]
