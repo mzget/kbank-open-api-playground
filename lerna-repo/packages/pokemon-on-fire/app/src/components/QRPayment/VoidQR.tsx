@@ -28,9 +28,8 @@ const VOID_QR = gql`
 `;
 
 export function VoidQR() {
-  const [store] = useStore();
-  const [appState, dispatch] = React.useReducer(appReducer, initialState);
-  const { partnerTxnUid } = appState;
+  const { appState } = useStore();
+  const [{ partnerTxnUid }, dispatch] = appState;
 
   const [voidQR, voidQRStatus] = useMutation(VOID_QR);
   const onClickHandler = React.useCallback(() => {

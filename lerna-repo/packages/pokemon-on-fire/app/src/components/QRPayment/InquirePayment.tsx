@@ -28,9 +28,8 @@ const INQUIRE_QR = gql`
 `;
 
 export function InquireQR() {
-  const [store] = useStore();
-  const [appState, dispatch] = React.useReducer(appReducer, initialState);
-  const { partnerTxnUid } = appState;
+  const { appState } = useStore();
+  const [{ partnerTxnUid }, dispatch] = appState;
 
   const [inquireQR, inquireStatus] = useMutation(INQUIRE_QR);
   const inquireQRHandler = React.useCallback(() => {
