@@ -20,6 +20,14 @@ function QRPayment() {
         }}
       >
         <Typography
+          variant="subtitle1"
+          gutterBottom
+          style={{ display: "flex", justifyContent: "center", padding: 4 }}
+        >
+          To run QR Payment demo, You need to run graphql server on your
+          localhost
+        </Typography>
+        <Typography
           variant="h6"
           gutterBottom
           style={{ display: "flex", justifyContent: "center" }}

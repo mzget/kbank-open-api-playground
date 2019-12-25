@@ -10,7 +10,7 @@ export interface IQRAPI {
 class QrAPI extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = "https://APIPORTALTEST.kasikornbank.com:12002/pos/";
+    this.baseURL = "https://apiportal.kasikornbank.com:12002/pos/";
   }
   async requestQR(data: any) {
     const response = await this.post("qr_request", data);

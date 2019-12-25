@@ -2,6 +2,7 @@ import React from "react";
 import App from "next/app";
 import Head from "next/head";
 import Link from "next/link";
+import GithubBadge from "@sinchang/react-github-badge";
 import { ThemeProvider } from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
@@ -39,6 +40,11 @@ export default class MyApp extends App {
               <p>KBank Payment API</p>
               <p>Referrence Implementation</p>
             </div>
+            <GithubBadge
+              url="https://github.com/mzget/kbank-open-api-playground"
+              slug="mzget/kbank-open-api-playground"
+              fill="white"
+            />
           </header>
           <Container
             id="App-Container"
