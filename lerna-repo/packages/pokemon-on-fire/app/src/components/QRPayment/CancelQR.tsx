@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 
 import { OPEN_API } from "../../const";
 import { useStore } from "../../store/storeContext";
+import { appReducer, initialState } from "../../store/appReducer";
 
 const CANCEL_QR = gql`
   mutation cancelQR($data: QRInput) {
@@ -27,8 +28,9 @@ const CANCEL_QR = gql`
 `;
 
 export function CancelQR() {
-  const [store] = useStore();
-  const { partnerTxnUid } = store;
+  const { appState } = useStore();
+  const [{ partnerTxnUid }] = appState;
+
   const [cancelQR, cancelQRStatus] = useMutation(CANCEL_QR);
   const onClickHandler = React.useCallback(() => {
     cancelQR({

@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 
 import { OPEN_API } from "../../const";
 import { useStore } from "../../store/storeContext";
+import { appReducer, initialState } from "../../store/appReducer";
 
 const VOID_QR = gql`
   mutation voidQR($data: QRInput) {
@@ -27,8 +28,9 @@ const VOID_QR = gql`
 `;
 
 export function VoidQR() {
-  const [store] = useStore();
-  const { partnerTxnUid } = store;
+  const { appState } = useStore();
+  const [{ partnerTxnUid }, dispatch] = appState;
+
   const [voidQR, voidQRStatus] = useMutation(VOID_QR);
   const onClickHandler = React.useCallback(() => {
     voidQR({

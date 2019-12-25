@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 
 import { OPEN_API } from "../../const";
 import { useStore } from "../../store/storeContext";
+import { appReducer, initialState } from "../../store/appReducer";
 
 const INQUIRE_QR = gql`
   mutation InquireQR($data: QRInput) {
@@ -27,8 +28,9 @@ const INQUIRE_QR = gql`
 `;
 
 export function InquireQR() {
-  const [store] = useStore();
-  const { partnerTxnUid } = store;
+  const { appState } = useStore();
+  const [{ partnerTxnUid }, dispatch] = appState;
+
   const [inquireQR, inquireStatus] = useMutation(INQUIRE_QR);
   const inquireQRHandler = React.useCallback(() => {
     inquireQR({

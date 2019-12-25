@@ -8,8 +8,8 @@ import { InjectedProps } from "./types";
 import { useStore } from "../store/storeContext";
 
 function PaymentRequestForm(props: InjectedProps) {
-  const [store] = useStore();
-  let { pokemon } = store;
+  const { cartState } = useStore();
+  let [{ pokemon }] = cartState;
 
   const [canMakePayment, setCanMakePayment] = useState(false);
   const [paymentObj, setPaymentObj] = useState(undefined);

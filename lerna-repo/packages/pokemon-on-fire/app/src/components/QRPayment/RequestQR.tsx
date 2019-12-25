@@ -5,7 +5,7 @@ import QRCode from "qrcode.react";
 
 import { OPEN_API } from "../../const";
 import { useStore } from "../../store/storeContext";
-import { addPartnerTrx } from "../../store/cartReducer";
+import { addPartnerTrx } from "../../store/appReducer";
 
 const REQUEST_QR = gql`
   mutation RequestQR($data: RequestQRInput) {
@@ -22,8 +22,9 @@ const REQUEST_QR = gql`
 `;
 
 export function RequestQR() {
-  const [store, dispatch] = useStore();
-  const { pokemon, partnerTxnUid } = store;
+  const { cartState, appState } = useStore();
+  const [{ pokemon }] = cartState;
+  const [_, dispatch] = appState;
 
   const onCompleatedHandler = React.useCallback((data: any) => {
     dispatch(addPartnerTrx(data.requestQR.partnerTxnUid));

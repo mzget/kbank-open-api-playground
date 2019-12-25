@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 import CheckoutCard from "./CheckoutCard";
-import ReceiptCard from "./ReceiptCard";
 
 enum CheckoutState {
   none = 0,
@@ -13,37 +12,9 @@ export function CheckoutRenderer(props: any) {
   let [checkoutState, setCheckoutState] = React.useState(CheckoutState.none);
   let [form, setForm] = React.useState({});
   let [result, setResult] = React.useState({});
-  const onProcessHandler = React.useCallback((formData: FormData) => {
-    let data = {};
-    for (let [key, value] of formData.entries()) {
-      data[key] = value;
-    }
-    setForm(data);
-    setCheckoutState(CheckoutState.processing);
-  }, []);
-  const onFinishHandler = React.useCallback((result: any) => {
-    setResult(result);
-    setCheckoutState(CheckoutState.finished);
-  }, []);
 
   if (checkoutState === CheckoutState.finished) {
-    return (
-      <React.Fragment>
-        <StyledProcessing>
-          <img src="/pokeball.png" />
-          <strong>Payment Finished</strong>
-          <strong>Request Form</strong>
-          {Object.entries(form).map(keyPair => (
-            <p key={keyPair[0]}>
-              {keyPair[0]} : {keyPair[1]}
-            </p>
-          ))}
-          <strong>Response Data</strong>
-          <span>{JSON.stringify(result, undefined, 2)}</span>
-        </StyledProcessing>
-        <ReceiptCard />
-      </React.Fragment>
-    );
+    return null;
   } else {
     return (
       <React.Fragment>
@@ -59,7 +30,7 @@ export function CheckoutRenderer(props: any) {
             ))}
           </StyledProcessing>
         )}
-        <CheckoutCard onProcess={onProcessHandler} onFinish={onFinishHandler} />
+        <CheckoutCard />
       </React.Fragment>
     );
   }
