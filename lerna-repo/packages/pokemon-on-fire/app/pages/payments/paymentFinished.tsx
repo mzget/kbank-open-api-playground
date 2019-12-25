@@ -2,24 +2,44 @@ import React from "react";
 import styled from "styled-components";
 
 import ReceiptCard from "../../src/components/checkout/ReceiptCard";
+import { useStore } from "../../src/store/storeContext";
 
-export function PaymentFinished() {
+export default function PaymentFinished() {
+  const { appState } = useStore();
+  const [{ paymentForm, paymentResult }, dispatch] = appState;
+
+  console.log(paymentForm, paymentResult);
+
   return (
-    <React.Fragment>
+    <div>
       <StyledProcessing>
         <img src="/pokeball.png" />
         <strong>Payment Finished</strong>
         <strong>Request Form</strong>
-        {Object.entries(form).map(keyPair => (
-          <p key={keyPair[0]}>
-            {keyPair[0]} : {keyPair[1]}
-          </p>
-        ))}
+        <textarea
+          name="paymentForm"
+          rows={5}
+          readOnly
+          value={JSON.stringify(paymentForm, undefined, 2)}
+        ></textarea>
+
         <strong>Response Data</strong>
-        <span>{JSON.stringify(result, undefined, 2)}</span>
+        <textarea
+          name="paymentResult"
+          rows={10}
+          readOnly
+          value={JSON.stringify(paymentResult, undefined, 2)}
+        ></textarea>
       </StyledProcessing>
       <ReceiptCard />
-    </React.Fragment>
+      <style jsx>{`
+        div {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      `}</style>
+    </div>
   );
 }
 
@@ -28,7 +48,7 @@ const StyledProcessing = styled.div`
   justify-content: center;
   flex-direction: column;
   height: 100%;
-  width: 50%;
+  width: 100%;
   padding: 16px;
   @keyframes App-logo-spin {
     from {

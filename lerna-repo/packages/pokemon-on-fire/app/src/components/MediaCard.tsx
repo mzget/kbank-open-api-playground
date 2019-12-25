@@ -38,7 +38,8 @@ export default function MediaCard(props: MediaCardProps) {
   const { pokemon } = props;
 
   const router = useRouter();
-  const [_, dispatch] = useStore();
+  const { cartState } = useStore();
+  const [_, dispatch] = cartState;
 
   const onClickHandler = useCallback(
     (e: React.MouseEvent) => {

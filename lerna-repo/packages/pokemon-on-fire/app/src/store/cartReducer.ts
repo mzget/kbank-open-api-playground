@@ -1,5 +1,16 @@
 import { createAction } from "redux-actions";
 
+export const initialState = {
+  pokemon: {
+    id: "025",
+    key: "025-Pikachu",
+    src: "025-Pikachu.png",
+    name: "Pikachu",
+    description:
+      "Whenever Pikachu comes across something new, it blasts it with a jolt of electricity. If you come across a blackened berry, it's evidence that this Pokémon mistook the intensity of its charge.",
+    price: "1200.00"
+  }
+};
 export function cartReducer(
   state: any,
   action: { type: string; payload: any }
@@ -9,8 +20,6 @@ export function cartReducer(
     case BUY_POKEMON:
       return { ...state, pokemon: action.payload };
 
-    case ADD_PARTNER_TRX:
-      return { ...state, partnerTxnUid: action.payload };
     default:
       throw new Error();
   }
@@ -18,6 +27,3 @@ export function cartReducer(
 
 export const BUY_POKEMON = "BUY_POKEMON";
 export const buyPokemon = createAction(BUY_POKEMON);
-
-export const ADD_PARTNER_TRX = "OPEN_API/ADD_PARTNER_TRX";
-export const addPartnerTrx = createAction(ADD_PARTNER_TRX);

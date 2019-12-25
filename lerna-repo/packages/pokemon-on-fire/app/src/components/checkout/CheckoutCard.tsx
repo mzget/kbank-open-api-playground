@@ -44,8 +44,8 @@ type CheckoutCardProps = {};
 
 export default function CheckoutCard(props: CheckoutCardProps) {
   const classes = useStyles(undefined);
-  const [state] = useStore();
-  let { pokemon } = state;
+  const { cartState } = useStore();
+  let [{ pokemon }] = cartState;
 
   return (
     <Card className={classes.card}>

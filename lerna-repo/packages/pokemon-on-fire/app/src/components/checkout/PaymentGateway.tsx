@@ -1,13 +1,15 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 import KPayment from "react-kpayment";
 import { useStore } from "../../store/storeContext";
 import SimpleModal from "../../components/SimpleModal";
+import { addPaymentData, addPaymentResult } from "../../store/appReducer";
 export function PaymentGateway() {
-  const [state] = useStore();
-  let { pokemon } = state;
+  const router = useRouter();
+  const { cartState, appState } = useStore();
+  let [{ pokemon }] = cartState;
+  const [{ paymentForm, paymentResult }, dispatch] = appState;
   const [open, setOpen] = React.useState(false);
 
   const onProcessHandler = React.useCallback((formData: FormData) => {
@@ -16,6 +18,7 @@ export function PaymentGateway() {
       data[key] = value;
     }
     console.log("processing", data);
+    dispatch(addPaymentData(data));
     // setForm(data);
     // setCheckoutState(CheckoutState.processing);
     setOpen(true);
@@ -23,9 +26,11 @@ export function PaymentGateway() {
 
   const onFinishHandler = React.useCallback((result: any) => {
     console.log("finished", result);
+    dispatch(addPaymentResult(result));
     // setResult(result);
     // setCheckoutState(CheckoutState.finished);
     setOpen(false);
+    router.replace("/payments/paymentFinished");
   }, []);
 
   return (

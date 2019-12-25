@@ -4,8 +4,8 @@ import Button from "@material-ui/core/Button";
 import { useStore } from "../../store/storeContext";
 import { WebPayment } from "../../webPayment/webPayment";
 export function PaymentReqDemo({ classes }) {
-  const [state] = useStore();
-  let { pokemon } = state;
+  const { cartState } = useStore();
+  let [{ pokemon }] = cartState;
 
   const showPaymentReqAPI = React.useCallback(() => {
     if (window.PaymentRequest) {

@@ -31,9 +31,9 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 export default function ReceiptCard(props: any) {
   const classes = useStyles(undefined);
-  const [state] = useStore();
+  const { cartState } = useStore();
+  let [{ pokemon }] = cartState;
   const router = useRouter();
-  let { pokemon } = state;
 
   const homeBtnHandler = React.useCallback(() => {
     router.replace("/");
